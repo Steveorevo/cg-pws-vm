@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# Virtuosoft build script for Code Garden PWS (Personal Web Server) Edition
+# on macOS x86 64-bit compatible systems.
+#
 
 # Check if Homebrew is installed
 if ! command -v brew &> /dev/null; then
