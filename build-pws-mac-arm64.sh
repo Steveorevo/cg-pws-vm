@@ -38,3 +38,4 @@ if [ ! -f "$ISO_FILENAME" ]; then
 else
     echo "Debian ISO already downloaded."
 fi
+
