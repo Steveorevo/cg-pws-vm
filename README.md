@@ -16,11 +16,11 @@ cd cg-pws-vm
 
 * macOS x64
 ```
-./build-pws-mac-amd64.sh
+source ./build-pws-mac-amd64.sh
 ```
 * macOS M1
 ```
-./build-pws-mac-arm64.sh
+source ß./build-pws-mac-arm64.sh
 ```
 * Windows x64
 ```
