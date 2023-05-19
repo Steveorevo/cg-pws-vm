@@ -6,7 +6,7 @@ Scripts to create platform and architecture specific virtual machines for Code G
 ## Building
 Building a specific virtual machine for a given host requires running under the host operating system for the given script.
 
-#### 1) Start by cloning this repo to a local folder, followed by changing directories to that folder:
+#### 1) Start by cloning this repo [via git](https://git-scm.com) to a local folder, followed by changing directories to that folder:
 ```
 git clone https://github.com/steveorevo/cg-pws-vm cg-pws-vm
 cd cg-pws-vm
