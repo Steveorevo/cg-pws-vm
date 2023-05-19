@@ -6,29 +6,30 @@ Scripts to create platform and architecture specific virtual machines for Code G
 ## Building
 Building a specific virtual machine for a given host requires running under the host operating system for the given script.
 
-Start by cloning this repo to a local folder:
+#### 1) Start by cloning this repo to a local folder:
 ```
 git clone https://github.com/steveorevo/cg-pws-vm cg-pws-vm
 ```
 
-Next, execute the given shell script on your operating system's CLI/terminal:
+#### 2) Next, execute the given shell script on your operating system's CLI/terminal:
 
-### macOS x64
+* macOS x64
 ```
+./build-pws-mac-amd64.sh
 ```
-
-### macOS M1
+* macOS M1
 ```
+./build-pws-mac-arm64.sh
 ```
-
-### Windows x64
+* Windows x64
 ```
+./build-pws-win-amd64.bat
 ```
-
-### Linux x64
+* Linux x64
 ```
+./build-pws-lnx-amd64.sh
 ```
-
-### Linux aarch64
+* Linux aarch64
 ```
+./build-pws-lnx-arm64.sh
 ```
