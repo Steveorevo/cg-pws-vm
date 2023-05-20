@@ -33,7 +33,7 @@ ISO_URL="https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.7.0
 ISO_FILENAME="debian-11.7.0-amd64-netinst.iso"
 if [ ! -f "$ISO_FILENAME" ]; then
     echo "Downloading Debian ISO..."
-    curl -o "$ISO_FILENAME" "$ISO_URL"
+    curl -L -o "$ISO_FILENAME" "$ISO_URL"
     echo "Download complete."
 else
     echo "Debian ISO already downloaded."
