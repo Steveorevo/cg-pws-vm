@@ -12,6 +12,9 @@ else
     echo "Xcode is already installed."
 fi
 
+# macOS goof; just need to invoke sudo once prior, yet NOT for brew install
+sudo whoami
+
 # Check if Homebrew is installed
 if ! command -v brew &> /dev/null; then
     echo "Homebrew is not installed. Installing..."
