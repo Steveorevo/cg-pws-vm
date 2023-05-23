@@ -26,3 +26,23 @@ if not exist "%ISO_FILENAME%" (
     echo Debian ISO already downloaded.
 )
 
+@REM # Untar the BIOS file
+@REM if [ ! -f "build/bios_amd.img" ]; then
+@REM     echo "Extracting BIOS file..."
+@REM     tar -xf ./boot/bios_amd.tar.xz -C ./build
+@REM     echo "Extraction complete."
+@REM else
+@REM     echo "BIOS file already extracted."
+@REM fi
+
+@REM # sudo qemu-system-x86_64 \
+@REM #     -smp 3 \
+@REM #     -m 4G \
+@REM #     -drive if=virtio,format=qcow2,file=disk-amd64.img \
+@REM #     -device virtio-net-pci,netdev=net0 \
+@REM #     -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
+@REM #     -cdrom debian-11.7.0-amd64-netinst.iso \
+@REM #     -boot d \
+@REM #     -cpu kvm64 \
+@REM #     -vga virtio \
+@REM #     -accel hvf

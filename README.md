@@ -34,3 +34,9 @@ source ß./build-pws-mac-arm64.sh
 ```
 ./build-pws-lnx-arm64.sh
 ```
+
+#### 3) Follow the instructions for **[Install Debian Linux](install-debian-linux.md)**
+
+#### 4) Follow the instructions for **[Install HestiaCP](install-hestiacp.md)**
+
+#### 5) Follow the instructions for **[Install HCPP](install-hcpp.md)**
