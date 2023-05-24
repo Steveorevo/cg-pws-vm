@@ -6,8 +6,8 @@ Install Debian Linux with the following options:
 * Select 'United States'.
 * Select 'American English' for the keyboard.
 
-* Replace the suggested hostname 'debian' with 'cp'
-* Enter 'dev.cc' for the domain name
+* Replace the suggested hostname 'debian' with 'local'
+* Enter 'code.gdn' for the domain name
 * Leave the root user with an empty password
 * Confirm by leaving root user password empty
 * Enter 'debian' for the full name of the new user
