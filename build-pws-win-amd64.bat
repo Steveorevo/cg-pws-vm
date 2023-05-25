@@ -38,7 +38,7 @@ if not exist "%ISO_FILENAME%" (
 @REM # sudo qemu-system-x86_64 \
 @REM #     -smp 3 \
 @REM #     -m 4G \
-@REM #     -drive if=virtio,format=qcow2,file=disk-amd64.img \
+@REM #     -drive if=virtio,format=qcow2,file=pws-amd64.img \
 @REM #     -device virtio-net-pci,netdev=net0 \
 @REM #     -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
 @REM #     -cdrom debian-11.7.0-amd64-netinst.iso \

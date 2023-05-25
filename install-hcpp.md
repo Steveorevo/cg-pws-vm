@@ -55,10 +55,10 @@ After installing all the aforementioned HCPP plugins; you can shutdown the VM:
 sudo shutdown now
 ```
 
-Compress the resulting disk-amd64.img (or disk-arm64.img for ARM processors) using the following command; be sure to usr or replace amd64 or arm64 respectively:
+Compress the resulting pws-amd64.img (or pws-arm64.img for ARM processors) using the following command; be sure to usr or replace amd64 or arm64 respectively:
 
 ```
-tar -cJf disk-amd64.tar.xz disk-amd64.img
+tar -cJf pws-amd64.tar.xz pws-amd64.img
 ```
 
 &nbsp;

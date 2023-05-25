@@ -71,8 +71,8 @@ else
 fi
 
 ## Create the virtual disk images with max ability at 2TB
-if [ ! -f "build/disk-amd64.img" ]; then
-    qemu-img create -f qcow2 build/disk-amd64.img 2000G
+if [ ! -f "build/pws-amd64.img" ]; then
+    qemu-img create -f qcow2 build/pws-amd64.img 2000G
     echo "Virtual disk image created!"
 else
     echo "Virtual disk image already exists. May not be clean; exiting."

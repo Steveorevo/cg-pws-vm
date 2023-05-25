@@ -61,8 +61,8 @@ else
 fi
 
 ## Create the virtual disk images with max ability at 2TB
-if [ ! -f "build/disk-amd64.img" ]; then
-    qemu-img create -f qcow2 build/disk-amd64.img 2000G
+if [ ! -f "build/pws-amd64.img" ]; then
+    qemu-img create -f qcow2 build/pws-amd64.img 2000G
     echo "Virtual disk image created!"
 else
     echo "Virtual disk image already exists. May not be clean; exiting."
@@ -88,5 +88,5 @@ sudo qemu-system-x86_64 \
     -device virtio-net-pci,netdev=net0 \
     -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
     -cdrom debian-11.7.0-amd64-netinst.iso \
-    -drive if=virtio,format=qcow2,file=disk-amd64.img
+    -drive if=virtio,format=qcow2,file=pws-amd64.img
 cd ..
