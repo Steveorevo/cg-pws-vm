@@ -40,10 +40,11 @@ sudo update-grub
 ```
 
 
-Next, we'll want remove apparmor and install (Hestia Control Panel)[https://hestiacp.com]. Copy and paste the following commands to the shell (followed by pressing enter):
+Next, we'll want remove apparmor, install Virtio 9p file system support, and install (Hestia Control Panel)[https://hestiacp.com]. Copy and paste the following commands to the shell (followed by pressing enter):
 
 ```
 sudo apt remove -y apparmor
+sudo apt install qemu-guest-agent spice-vdagent
 cd /tmp
 wget https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-install.sh
 sudo bash hst-install.sh --apache yes --phpfpm yes --multiphp yes --vsftpd yes --proftpd no --named no --mysql yes --postgresql yes --exim no --dovecot no --sieve no --clamav no --spamassassin no --iptables yes --fail2ban no --quota no --api yes --interactive yes --with-debs no  --port '8083' --hostname 'cp.dev.cc' --email 'pws@dev.cc' --password 'personal-web-server' --lang 'en' 
