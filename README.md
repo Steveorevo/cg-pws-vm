@@ -10,7 +10,7 @@ Building a specific virtual machine for a given host requires running under the 
 
 #### 1) Start by cloning this repo [via git](https://git-scm.com) to a local folder, followed by changing directories to that folder:
 ```
-git clone https://github.com/steveorevo/cg-pws-vm cg-pws-vm
+git clone https://github.com/virtuosoft-dev/cg-pws-vm cg-pws-vm
 cd cg-pws-vm
 ```
 
