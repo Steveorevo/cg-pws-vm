@@ -35,7 +35,7 @@ After installing the base system, continue the installer with:
 * Leave the HTTP proxy information blank, just press tab, then press enter to continue.
 * Answer 'No' to the 'Configuring popularity-contest'
 
-Ater the installer finishes configuring apt, it will ask about software selection; do not select any additional options; the default *should be* only **SSH server** and **standard system utilities** are selected and needed at this time. Uncheck 'Debian desktop environment' and 'GNOME' if checked by using the arrow keys and spacebar to select/unselect them.
+Ater the installer finishes configuring apt, it will ask about software selection; do not select any additional options; the default *should only be* **SSH server** and **standard system utilities** are selected and needed at this time. Uncheck 'Debian desktop environment' and 'GNOME' if checked by using the arrow keys and spacebar to select/unselect them.
 
 * Make sure 'Software selection' is only 'SSH server' and 'standard system utilities', then press tab, and press enter to continue.
 

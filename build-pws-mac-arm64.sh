@@ -84,3 +84,42 @@ else
     exit 1
 fi
 
+
+# qemu-system-x86_64 \
+#         -vga virtio \
+#         -device e1000,mac=0A:ED:23:58:71:EA,netdev=net0 \
+#         -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
+#         -cpu Haswell \
+#         -smp cpus=3,sockets=1,cores=3,threads=1 \
+#         -machine q35,vmport=off \
+#         -accel hvf \
+#         -global PIIX4_PM.disable_s3=1 \
+#         -global ICH9-LPC.disable_s3=1 \
+#         -drive if=pflash,format=raw,unit=0,file=efi_amd64.img,readonly=on \
+#         -drive if=pflash,unit=1,file=efi_amd64_vars.img \
+#         -m 4096 \
+#         -drive if=virtio,format=qcow2,file=pws-amd64.img \
+#         -device virtio-blk-pci,drive=driveB07F6855-4243-40E7-A46C-F857444E0A53,bootindex=0 \
+#         -drive if=none,media=disk,id=driveB07F6855-4243-40E7-A46C-F857444E0A53,file=/Users/sjcarnam/Library/Containers/com.utmapp.UTM/Data/Documents/pws-mac-amd64.utm/Data/B07F6855-4243-40E7-A46C-F857444E0A53.qcow2,discard=unmap,detect-zeroes=unmap \
+#         -fsdev "local,id=virtfs0,path=/Users/sjcarnam/Library/Application Support/@virtuosoft/cg-pws-app,security_model=mapped-xattr" \
+#         -device virtio-9p-pci,fsdev=virtfs0,mount_tag=appFolder \
+#         -fsdev "local,id=virtfs1,path=/Users/sjcarnam/Sites,security_model=mapped-xattr" \
+#         -device virtio-9p-pci,fsdev=virtfs1,mount_tag=webFolder \
+#         -name pws-mac-amd64 \
+#         -uuid 7C16DB0F-BAB5-456F-87F6-81CD52347B62 \
+#         -rtc base=localtime \
+#         -device virtio-rng-pci \
+#         -device virtio-balloon-pci
+
+
+# sudo qemu-system-x86_64 \
+#     -accel hvf \
+#     -cpu Haswell-v1 \
+#     -smp 3 \
+#     -m 4G \
+#     -vga virtio \
+#     -display default,show-cursor=on \
+#     -device virtio-net-pci,netdev=net0 \
+#     -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
+#     -cdrom debian-11.7.0-amd64-netinst.iso \
+#     -drive if=virtio,format=qcow2,file=pws-amd64.img

@@ -10,17 +10,6 @@ ssh debian@localhost -p 8022
 * Answer 'yes' if prompted to allow connection the first time.
 * At the 'password:' prompt, type the password, 'personal-web-server' and press enter.
 
-After login, we'll need to modify the nginx.service file to help avoid an Nginx binding error as the network comes online. Edit the file with the following command:
-
-```
-sudo nano /lib/systemd/system/nginx.service
-```
-
-Add the following line in the [Service] section:
-
-```
-ExecStartPre=/bin/sleep 3
-```
 
 While we're at it, let's remove the 5 second delay in grub. Edit the following file with the command:
 
@@ -39,37 +28,32 @@ Then be sure to execute to have changes take effect:
 sudo update-grub
 ```
 
-Then install Virtio 9p file system support:
-
-```
-sudo apt install qemu-guest-agent spice-vdagent
-```
-
-Followed by editing the file to load support at boot:
-
-```
-sudo nano /etc/modules
-```
-
-Add the following lines to the end of the file and save it:
-```
-9pnet_virtio
-9p
-```
-
-Next, we'll want remove apparmor  and install (Hestia Control Panel)[https://hestiacp.com]. Copy and paste the following commands to the shell (followed by pressing enter):
+Next, we'll want remove apparmor and install sshfs along with (Hestia Control Panel)[https://hestiacp.com]. Copy and paste the following commands to the shell (followed by pressing enter):
 
 ```
 sudo apt remove -y apparmor
+sudo apt install -y sshfs
 cd /tmp
 wget https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-install.sh
-sudo bash hst-install.sh --apache yes --phpfpm yes --multiphp yes --vsftpd yes --proftpd no --named no --mysql yes --postgresql yes --exim no --dovecot no --sieve no --clamav no --spamassassin no --iptables yes --fail2ban no --quota no --api yes --interactive yes --with-debs no  --port '8083' --hostname 'cp.dev.cc' --email 'pws@dev.cc' --password 'personal-web-server' --lang 'en' 
+sudo bash hst-install.sh --apache yes --phpfpm yes --multiphp yes --vsftpd yes --proftpd no --named no --mysql yes --postgresql yes --exim no --dovecot no --sieve no --clamav no --spamassassin no --iptables yes --fail2ban no --quota no --api yes --interactive no --with-debs no  --port '8083' --hostname 'cp.dev.cc' --email 'pws@dev.cc' --password 'personal-web-server' --lang 'en' --force
 ```
 
 * At the 'password:' prompt, type the password, 'personal-web-server' and press enter.
 * When prompted to install HestiaCP Y/N, answer yes.
 
 Be patient, the HestiaCP project will take some time to complete installation. After installation completes, the system will reboot.
+
+We then need to login again and modify the nginx.service file to help avoid an Nginx binding error as the network comes online. Edit the file with the following command:
+
+```
+sudo nano /lib/systemd/system/nginx.service
+```
+
+Add the following line in the [Service] section:
+
+```
+ExecStartPre=/bin/sleep 3
+```
 
 &nbsp;
 

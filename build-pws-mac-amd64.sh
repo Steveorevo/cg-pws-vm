@@ -32,6 +32,14 @@ else
     echo "Homebrew is already installed."
 fi
 
+# Check if sshpass is installed
+if ! brew list --formula | grep -q '^sshpass$'; then
+    echo "sshpass is not installed. Installing..."
+    brew install --force hudochenkov/sshpass/sshpass
+else
+    echo "sshpass is already installed."
+fi
+
 # Check if QEMU is installed
 if ! brew list --formula | grep -q '^qemu$'; then
     echo "QEMU is not installed. Installing..."
@@ -47,6 +55,14 @@ if [ ! -d "build" ]; then
     echo "Build folder created!"
 else
     echo "Build folder already exists."
+fi
+
+# Copy EFI over to build folder
+if [ ! -f "build/efi_amd64.img" ]; then
+    cp /usr/local/share/qemu/edk2-x86_64-code.fd build/efi_amd64.img
+    cat /usr/local/share/qemu/edk2-i386-vars.fd /usr/local/share/qemu/edk2-x86_64-code.fd > build/efi_amd64_vars.img
+else
+    echo "BIOS file already extracted."
 fi
 
 # Check if ISO file already exists
@@ -77,16 +93,20 @@ fi
 # Run QEMU with the following options to start the debian installation process
 echo "Booting Debian Linux installer..."
 cd build
-
-sudo qemu-system-x86_64 \
-    -accel hvf \
-    -cpu Haswell-v1 \
-    -smp 3 \
-    -m 4G \
-    -vga virtio \
-    -display default,show-cursor=on \
-    -device virtio-net-pci,netdev=net0 \
-    -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
-    -cdrom debian-11.7.0-amd64-netinst.iso \
-    -drive if=virtio,format=qcow2,file=pws-amd64.img
+qemu-system-x86_64 \
+        -machine type=q35,accel=hvf \
+        -cpu Haswell-v1 \
+        -smp 3 \
+        -m 4G \
+        -vga virtio \
+        -display default,show-cursor=on \
+        -drive if=pflash,format=raw,file=efi_amd64.img,readonly=on \
+        -drive if=pflash,format=raw,file=efi_amd64_vars.img,readonly=on \
+        -device virtio-net-pci,netdev=net0 \
+        -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
+        -cdrom debian-11.7.0-amd64-netinst.iso \
+        -drive if=virtio,format=qcow2,file=pws-amd64.img \
+        -device virtio-balloon-pci \
+        -device virtio-rng-pci \
+        -rtc base=localtime,clock=host \
 cd ..
