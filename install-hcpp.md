@@ -1,61 +1,23 @@
 ## Install HCPP
-After installing HestiaCP the system will reboot. You will need to login again to continue installing HestiaCP-Pluginable (HCPP) and the additional extensions that make up Code Garden PWS (Personal Web Server) edition. Use the following directions:
-
-* Login via your OS' shell again (i.e. from Terminal.app in macOS) and enter the command:
+After installing HestiaCP the system will reboot. Once again, the QEMU virtual machine instance should still be running and at the login prompt; leave this running. Now we can install HCPP (Hestia Control Panel Plugins)that furnish us with Code Garden's (Core Open Developer Elements) support for NodeJS, Open VSCode Server, line-by-line debugging in both PHP and NodeJS, Node-RED, psuedo mail server and with client side preview, etc. Within the terminal you used to install HestiaCP you can type the following to install HCPP:
 
 ```
-ssh debian@localhost -p 8022
+./install-hcpp.sh
 ```
 
-* At the 'password:' prompt, type the password, 'personal-web-server' and press enter.
+### About HCPP
+The HCPP installation process will automatically install each of the repos listed below. You can learn more about each repo at their respective links:
 
-Next, execute the following to install HestiaCP_Pluginable's install instructions:
+* [HestiaCP-NodeApp](https://github.com/Steveorevo/hestiacp-nodeapp/blob/main/README.md)
+* [HestiaCP-MailCatcher](https://github.com/Steveorevo/hestiacp-mailcatcher)
+* [HestiaCP-VSCode](https://github.com/Steveorevo/hestiacp-vscode)
+* [HestiaCP-NodeRED](https://github.com/Steveorevo/hestiacp-nodered)
+* [HestiaCP-NodeBB](https://github.com/Steveorevo/hestiacp-nodebb)
+* [HestiaCP-Ghost](https://github.com/Steveorevo/hestiacp-ghost)
 
-* Switch to root user::
+After the aforementioned HCPP plugins are installed the VM will automatically shutdown.
 
-```
-sudo -s
-```
-
-* At the 'password:' prompt, type the password, 'personal-web-server' and press enter.
-* Download and move the files into place:
-
-```
-cd /tmp
-wget https://github.com/Steveorevo/hestiacp-pluginable/archive/refs/heads/main.zip
-unzip main.zip
-mv hestiacp-pluginable-main/hooks /etc/hestiacp
-rm -rf hestiacp-pluginable-main
-rm main.zip
-```
-
-* Run the post_install.sh script and restart Hestia:
-```
-/etc/hestiacp/hooks/post_install.sh
-service hestia restart
-```
-
-### Install HCPP Based Projects
-Now we can install HCPP plugins that furnish us with Code Garden's (Core Open Developer Elements) support for NodeJS, Open VSCode Server, line-by-line debugging in both PHP and NodeJS, Node-RED, psuedo mail server and with client side preview, etc. 
-
-Note: It's important to install these one-by-one and in the order listed to avoid any depedency conflicts and to ensure a stable installation. Further, be sure to verify their installation using HestiaCP's control panel itself.
-
-Visit each of these repos and follow the **Installation** section for each:
-
-* [HestiaCP-NodeApp](https://github.com/Steveorevo/hestiacp-nodeapp/blob/main/README.md#installation)
-* [HestiaCP-MailCatcher](https://github.com/Steveorevo/hestiacp-mailcatcher#installation)
-* [HestiaCP-VSCode](https://github.com/Steveorevo/hestiacp-vscode#installation)
-* [HestiaCP-NodeRED](https://github.com/Steveorevo/hestiacp-nodered#installation)
-* [HestiaCP-NodeBB](https://github.com/Steveorevo/hestiacp-nodebb#installation)
-* [HestiaCP-Ghost](https://github.com/Steveorevo/hestiacp-ghost#installation)
-
-After installing all the aforementioned HCPP plugins; you can shutdown the VM:
-
-```
-sudo shutdown now
-```
-
-Compress the resulting pws-amd64.img (or pws-arm64.img for ARM processors) using the following command; be sure to usr or replace amd64 or arm64 respectively:
+Compress the resulting pws-amd64.img (or pws-arm64.img for ARM processors) using the following command; be sure to use or replace amd64 or arm64 respectively:
 
 ```
 tar -cJf pws-amd64.tar.xz pws-amd64.img

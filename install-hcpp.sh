@@ -7,14 +7,14 @@ remote_password="personal-web-server"
 remote_port="8022"
 
 # Local script file to transfer
-local_script_file="remote.sh"
+local_script_file="remote-hcpp.sh"
 
 # Remote script file destination
-remote_script_file="/tmp/remote.sh"
+remote_script_file="/tmp/remote-hcpp.sh"
 
 # Warn user
 clear
-echo "!!! This script will take a LONG time to run. !!!"
+echo "!!! HCPP installation will take a LONG time to run. !!!"
 echo "Please be patient and do not interrupt the process."
 echo ""
 
@@ -23,4 +23,4 @@ sshpass -p "$remote_password" scp -o StrictHostKeyChecking=no -P "$remote_port" 
 
 # SSH connection and script execution with sudo
 sshpass -p "$remote_password" ssh -o StrictHostKeyChecking=no -p "$remote_port" $remote_user@$remote_host "echo '$remote_password' | sudo -S bash $remote_script_file"
-echo "Finished modifications and HestiaCP installation"
+echo "Finished install HCPP components for Code Garden PWS Edition"

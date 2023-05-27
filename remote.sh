@@ -40,4 +40,8 @@ sed -i "${line_number}i\\${line_to_add}" "$temp_file"
 cp "$temp_file" /lib/systemd/system/nginx.service
 rm "$temp_file"
 
-echo "Finished modifications and HestiaCP installation"
+# Reboot the server
+echo "Rebooting the server."
+shutdown -r now
+
+
