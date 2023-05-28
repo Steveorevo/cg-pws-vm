@@ -42,3 +42,20 @@ source ß./build-pws-mac-arm64.sh
 #### 4) Follow the instructions for **[Install HestiaCP](install-hestiacp.md)**
 
 #### 5) Follow the instructions for **[Install HCPP](install-hcpp.md)**
+
+#### Support the creator
+You can help this author's open source development endeavors by donating any amount to Stephen J. Carnam @ Virtuosoft. Your donation, no matter how large or small helps pay for essential time and resources to create MIT and GPL licensed projects that you and the world can benefit from. Click the link below to donate today :)
+<div>
+         
+
+[<kbd> <br> Donate to this Project <br> </kbd>][KBD]
+
+
+</div>
+
+
+<!---------------------------------------------------------------------------->
+
+[KBD]: https://virtuosoft.com/donate
+
+https://virtuosoft.com/donate
