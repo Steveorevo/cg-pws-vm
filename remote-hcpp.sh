@@ -41,11 +41,15 @@ cd /usr/local/hestia/plugins/mailcatcher
 php -r 'require_once("/usr/local/hestia/web/pluginable.php");global $hcpp;$hcpp->do_action("hcpp_plugin_installed", "mailcatcher");'
 touch "/usr/local/hestia/data/hcpp/installed/mailcatcher"
 
+# Install HCPP VSCode
+cd /usr/local/hestia/plugins
+git clone --depth 1 --branch "v1.0.0-beta.1" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode 2>/dev/null
+cd /usr/local/hestia/plugins/vscode
+./install
+touch "/usr/local/hestia/data/hcpp/installed/vscode"
+
 
 ## TODO: install each component one-at-a-time...
-##
-# * [HestiaCP-NodeRED](https://github.com/virtuosoft-dev/hcpp-nodered)
-# * [HestiaCP-MailCatcher](https://github.com/virtuosoft-dev/hcpp-mailcatcher)
 # * [HestiaCP-VSCode](https://github.com/virtuosoft-dev/hcpp-vscode)
 # * [HestiaCP-NodeBB](https://github.com/virtuosoft-dev/hcpp-nodebb)
 # * [HestiaCP-Ghost](https://github.com/virtuosoft-dev/hcpp-ghost)
