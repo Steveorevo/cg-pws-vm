@@ -33,6 +33,12 @@ cd /usr/local/hestia/plugins/nodered
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodered"
 
+# Install HCPP MailCatcher
+cd /usr/local/hestia/plugins
+git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-mailcatcher.git mailcatcher 2>/dev/null
+cd /usr/local/hestia/plugins/mailcatcher
+./install
+touch "/usr/local/hestia/data/hcpp/installed/mailcatcher"
 
 ## TODO: install each component one-at-a-time...
 ##
