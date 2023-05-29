@@ -40,6 +40,12 @@ sed -i "${line_number}i\\${line_to_add}" "$temp_file"
 cp "$temp_file" /lib/systemd/system/nginx.service
 rm "$temp_file"
 
+# Add ll alias
+cat <<EOT >> /etc/bash.bashrc
+alias ll='ls -alF'
+EOT
+fi
+
 # Reboot the server
 echo "Rebooting the server."
 shutdown -r now
