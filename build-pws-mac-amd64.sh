@@ -94,19 +94,17 @@ fi
 echo "Booting Debian Linux installer..."
 cd build
 qemu-system-x86_64 \
-        -machine type=q35,accel=hvf \
+        -machine q35,vmport=off -accel hvf \
         -cpu Haswell-v1 \
-        -smp 3 \
+        -smp cpus=4,sockets=1,cores=4,threads=1 \
         -m 4G \
         -vga virtio \
         -display default,show-cursor=on \
         -drive if=pflash,format=raw,file=efi_amd64.img,readonly=on \
         -drive if=pflash,format=raw,file=efi_amd64_vars.img,readonly=on \
+        -cdrom debian-11.7.0-amd64-netinst.iso \
         -device virtio-net-pci,netdev=net0 \
         -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
-        -cdrom debian-11.7.0-amd64-netinst.iso \
         -drive if=virtio,format=qcow2,file=pws-amd64.img \
-        -device virtio-balloon-pci \
-        -device virtio-rng-pci \
-        -rtc base=localtime,clock=host \
+        -device virtio-balloon-pci
 cd ..
