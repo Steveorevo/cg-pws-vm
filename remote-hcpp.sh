@@ -13,7 +13,7 @@ sleep 1
 
 # Install HestiaCP Pluginable project
 cd /tmp
-git clone --depth 1 --branch "v1.0.0-beta.1" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.2" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
 mv hestiacp-pluginable/hooks /etc/hestiacp
 rm -rf hestiacp-pluginable-main
 /etc/hestiacp/hooks/post_install.sh
@@ -55,10 +55,12 @@ cd /usr/local/hestia/plugins/nodebb
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodebb"
 
-## TODO: install each component one-at-a-time...
-# * [HestiaCP-VSCode](https://github.com/virtuosoft-dev/hcpp-vscode)
-# * [HestiaCP-NodeBB](https://github.com/virtuosoft-dev/hcpp-nodebb)
-# * [HestiaCP-Ghost](https://github.com/virtuosoft-dev/hcpp-ghost)
+# Install HCPP Ghost
+cd /usr/local/hestia/plugins
+git clone --depth 1 --branch "v1.0.0-beta.1" https://github.com/virtuosoft-dev/hcpp-ghost.git ghost 2>/dev/null
+cd /usr/local/hestia/plugins/ghost
+./install
+touch "/usr/local/hestia/data/hcpp/installed/ghost"
 
 # Shutdown the server
 echo "Shutting down the server."
