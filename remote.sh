@@ -44,10 +44,38 @@ rm "$temp_file"
 cat <<EOT >> /etc/bash.bashrc
 alias ll='ls -alF'
 EOT
-fi
+
+# Install Samba
+echo "Installing Samba."
+apt install -y samba
+mv /etc/samba/smb.conf /etc/samba/smb.conf.bak
+cat <<EOT >> /etc/samba/smb.conf
+[global]
+    workgroup = WORKGROUP
+    log file = /var/log/samba/log.%m
+    max log size = 1000
+    logging = file
+    panic action = /usr/share/samba/panic-action %d
+    server role = standalone server
+    obey pam restrictions = yes
+    unix password sync = yes
+    passwd program = /usr/bin/passwd %u
+    passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+    pam password change = yes
+    map to guest = bad user
+    usershare allow guests = no
+
+[pws]
+    comment = Personal Web Server
+    path = /home/pws/web
+    browseable = yes
+    read only = no
+    guest ok = no
+    valid users = pws
+
+EOT
+
 
 # Reboot the server
 echo "Rebooting the server."
 shutdown -r now
-
-
