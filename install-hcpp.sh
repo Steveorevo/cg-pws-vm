@@ -24,3 +24,17 @@ sshpass -p "$remote_password" scp -o StrictHostKeyChecking=no -P "$remote_port" 
 # SSH connection and script execution with sudo
 sshpass -p "$remote_password" ssh -o StrictHostKeyChecking=no -p "$remote_port" $remote_user@$remote_host "echo '$remote_password' | sudo -S bash $remote_script_file"
 echo "Finished install HCPP components for Code Garden PWS Edition"
+sleep 3
+echo ""
+echo "Now compressing resulting files for redistribution"
+if [ -f "build/pws-amd64.img" ]; then
+    echo "Found pws-amd64.img, compressing with EFI files"
+    cd ./build
+    tar -cJf pws-amd64.tar.xz pws-amd64.img efi_amd64.img efi_amd64_vars.img
+fi
+if [ -f "build/pws-amd64.img" ]; then
+    echo "Found pws-arm64.img, compressing with EFI files"
+    cd ./build
+    tar -cJf pws-arm64.tar.xz pws-arm64.img efi_arm64.img efi_arm64_vars.img
+fi
+echo "Done! Finished compression, exiting"

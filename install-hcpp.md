@@ -17,11 +17,8 @@ The HCPP installation process will automatically install each of the repos liste
 
 After the aforementioned HCPP plugins are installed the VM will automatically shutdown.
 
-Compress the resulting pws-amd64.img (or pws-arm64.img for ARM processors) using the following command; be sure to use or replace amd64 or arm64 respectively:
+The main install-hcpp.sh script will continue with compressing the resulting pws-amd64.img (or pws-arm64.img for ARM processors), along with their required EFI images into a compact, redistributable archive for use with the Code Garden PWS edition application; [cg-pws-app](https://github.com/virtuosoft-dev/cg-pws-app). The resulting filename will be either pws-amd64.tar.xz and/or pws-arm64.tar.xz.
 
-```
-tar -cJf pws-amd64.tar.xz pws-amd64.img
-```
 
 &nbsp;
 

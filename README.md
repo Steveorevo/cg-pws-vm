@@ -22,7 +22,7 @@ source ./build-pws-mac-amd64.sh
 ```
 * macOS M1
 ```
-source ß./build-pws-mac-arm64.sh
+source ./build-pws-mac-arm64.sh
 ```
 * Windows x64
 ```
