@@ -93,7 +93,7 @@ mkdir -p /media/appFolder
 cat <<EOT >> /etc/fstab
 
 # Personal Web Server appFolder
-appFolder /media/appFolder 9p trans=virtio,version=9p2000.L,posixacl,msize=104857600 0 0
+appFolder /media/appFolder 9p _netdev,trans=virtio,version=9p2000.L,msize=104857600 0 0
 
 EOT
 
