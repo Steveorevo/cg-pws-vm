@@ -88,6 +88,15 @@ EOT
 ./v-add-user-package /tmp/pws.txt pws
 ./v-add-user pws personal-web-server pws@local.code.gdn pws "Personal Web Server"
 
+# Add the pws appFolder mount point
+mkdir -p /media/appFolder
+cat <<EOT >> /etc/fstab
+
+# Personal Web Server appFolder
+appFolder /media/appFolder 9p trans=virtio,version=9p2000.L,posixacl,msize=104857600 0 0
+
+EOT
+
 # Shutdown the server
 echo "Shutting down the server."
 shutdown now
