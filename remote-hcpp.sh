@@ -88,7 +88,24 @@ EOT
 ./v-add-user-package /tmp/pws.txt pws
 ./v-add-user pws personal-web-server pws@local.code.gdn pws "Personal Web Server"
 
-# Add the pws appFolder mount point
+# # Add Samba firewall rule
+# ./v-add-firewall-rule ACCEPT 0.0.0.0/0 445 TCP SMB
+# ./v-update-firewall
+
+# # Add NFS exports
+# cat <<EOT >> /etc/exports
+
+# # Personal Web Server web folder
+# /home/pws/web *(rw,sync,no_subtree_check)
+
+# EOT
+
+
+# # Add NFS firewall rule
+# ./v-add-firewall-rule ACCEPT 0.0.0.0/0 2049 TCP SMB
+# ./v-update-firewall
+
+# Add the virtio pws appFolder mount point
 mkdir -p /media/appFolder
 cat <<EOT >> /etc/fstab
 

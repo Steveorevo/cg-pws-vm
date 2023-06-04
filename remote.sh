@@ -45,37 +45,63 @@ cat <<EOT >> /etc/bash.bashrc
 alias ll='ls -alF'
 EOT
 
-# Install Samba
-echo "Installing Samba."
-apt install -y samba
-mv /etc/samba/smb.conf /etc/samba/smb.conf.bak
-cat <<EOT >> /etc/samba/smb.conf
-[global]
-    workgroup = WORKGROUP
-    log file = /var/log/samba/log.%m
-    max log size = 1000
-    logging = file
-    panic action = /usr/share/samba/panic-action %d
-    server role = standalone server
-    obey pam restrictions = yes
-    unix password sync = yes
-    passwd program = /usr/bin/passwd %u
-    passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
-    pam password change = yes
-    map to guest = bad user
-    usershare allow guests = no
+# # Install Samba
+# echo "Installing Samba."
+# apt install -y samba
+# mv /etc/samba/smb.conf /etc/samba/smb.conf.bak
+# cat <<EOT >> /etc/samba/smb.conf
+# [global]
+#     workgroup = WORKGROUP
+#     log file = /var/log/samba/log.%m
+#     max log size = 1000
+#     logging = file
+#     panic action = /usr/share/samba/panic-action %d
+#     server role = standalone server
+#     obey pam restrictions = yes
+#     unix password sync = yes
+#     passwd program = /usr/bin/passwd %u
+#     passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+#     pam password change = yes
+#     map to guest = bad user
+#     usershare allow guests = no
 
-[pws]
-    comment = Personal Web Server
-    path = /home/pws/web
-    browseable = yes
-    read only = no
-    guest ok = no
-    valid users = pws
+# [pws]
+#     comment = Personal Web Server
+#     path = /home/pws/web
+#     browseable = yes
+#     read only = no
+#     guest ok = no
+#     valid users = pws
 
-EOT
+# EOT
 
+# # Install NFS
+# echo "Installing NFS."
+# apt install -y nfs-kernel-server nfs-common
 
 # Reboot the server
 echo "Rebooting the server."
+
 shutdown -r now
+
+
+# NFS is pathetic on macOS, but heres how to mount it:
+# qemu-system-x86_64 \
+#     -machine q35,vmport=off \
+#     -accel hvf \
+#     -cpu Haswell-v1 \
+#     -smp cpus=4,sockets=1,cores=4,threads=1 \
+#     -m 4G \
+#     -vga virtio \
+#     -drive if=pflash,format=raw,file=efi_amd64.img,readonly=on \
+#     -drive if=pflash,format=raw,file=efi_amd64_vars.img,readonly=on \
+#     -device virtio-net-pci,netdev=net0 \
+#     -netdev user,smb=/home,id=net0,hostfwd=tcp::8049-:2049,hostfwd=tcp::8445-:445,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
+#     -drive if=virtio,format=qcow2,file=pws-amd64.img \
+#     -fsdev "local,id=virtfs0,path=/Users/sjcarnam/Library/Application Support/@virtuosoft/cg-pws-app,security_model=mapped-xattr" \
+#     -device virtio-9p-pci,fsdev=virtfs0,mount_tag=appFolder \
+#     -device virtio-balloon-pci \
+#     -display default,show-cursor=on
+
+# sudo mount -o port=8049,vers=4,resvport,rsize=65536,wsize=65536 -t nfs 127.0.0.1:/home/pws/web /Users/sjcarnam/pws
+# sudo umount /Users/sjcarnam/pws
