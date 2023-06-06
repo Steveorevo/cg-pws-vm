@@ -62,6 +62,13 @@ cd /usr/local/hestia/plugins/ghost
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/ghost"
 
+# Install HCPP WebDAV
+cd /usr/local/hestia/plugins
+git clone --depth 1 --branch "v0.0.1" https://github.com/virtuosoft-dev/hcpp-webdav.git ghost 2>/dev/null
+cd /usr/local/hestia/plugins/webdav
+./install
+touch "/usr/local/hestia/data/hcpp/installed/webdav"
+
 # Create our pws user and package
 cd /usr/local/hestia/bin
 cat <<EOT >> /tmp/pws.txt
