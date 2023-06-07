@@ -13,7 +13,7 @@ sleep 1
 
 # Install HestiaCP Pluginable project
 cd /tmp
-git clone --depth 1 --branch "v1.0.0-beta.2" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.3" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
 mv hestiacp-pluginable/hooks /etc/hestiacp
 rm -rf hestiacp-pluginable-main
 /etc/hestiacp/hooks/post_install.sh
@@ -62,12 +62,12 @@ cd /usr/local/hestia/plugins/ghost
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/ghost"
 
-# Install HCPP WebDAV
-cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v0.0.1" https://github.com/virtuosoft-dev/hcpp-webdav.git ghost 2>/dev/null
-cd /usr/local/hestia/plugins/webdav
-./install
-touch "/usr/local/hestia/data/hcpp/installed/webdav"
+# # Install HCPP WebDAV
+# cd /usr/local/hestia/plugins
+# git clone --depth 1 --branch "v0.0.1" https://github.com/virtuosoft-dev/hcpp-webdav.git webdav 2>/dev/null
+# cd /usr/local/hestia/plugins/webdav
+# ./install
+# touch "/usr/local/hestia/data/hcpp/installed/webdav"
 
 # Create our pws user and package
 cd /usr/local/hestia/bin

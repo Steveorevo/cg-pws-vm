@@ -45,6 +45,10 @@ cat <<EOT >> /etc/bash.bashrc
 alias ll='ls -alF'
 EOT
 
+# Reboot the server
+echo "Rebooting the server."
+shutdown -r now
+
 # # Install Samba
 # echo "Installing Samba."
 # apt install -y samba
@@ -78,12 +82,6 @@ EOT
 # # Install NFS
 # echo "Installing NFS."
 # apt install -y nfs-kernel-server nfs-common
-
-# Reboot the server
-echo "Rebooting the server."
-
-shutdown -r now
-
 
 # NFS is pathetic on macOS, but heres how to mount it:
 # qemu-system-x86_64 \
