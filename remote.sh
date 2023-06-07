@@ -28,7 +28,7 @@ wget https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-ins
 
 # Install HestiaCP
 echo "Installing HestiaCP."
-bash hst-install.sh --apache yes --phpfpm yes --multiphp yes --vsftpd yes --proftpd no --named no --mysql yes --postgresql yes --exim no --dovecot no --sieve no --clamav no --spamassassin no --iptables yes --fail2ban no --quota no --api yes --interactive no --with-debs no  --port '8083' --hostname 'local.code.gdn' --email 'pws@local.code.gdn' --password 'personal-web-server' --lang 'en' --force
+bash hst-install.sh --apache yes --phpfpm yes --multiphp yes --vsftpd yes --proftpd no --named no --mysql yes --postgresql yes --exim no --dovecot no --sieve no --clamav no --spamassassin no --iptables yes --fail2ban no --quota no --api yes --interactive no --with-debs no  --port '8083' --hostname 'local.dev.cc' --email 'pws@dev.cc' --password 'personal-web-server' --lang 'en' --force
 
 # Adjusting nginx.service file
 echo "Adjusting nginx.service file."

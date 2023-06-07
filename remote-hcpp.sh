@@ -93,7 +93,7 @@ SHELL=bash
 BACKUPS=0
 EOT
 ./v-add-user-package /tmp/pws.txt pws
-./v-add-user pws personal-web-server pws@local.code.gdn pws "Personal Web Server"
+./v-add-user pws personal-web-server pws@dev.cc pws "Personal Web Server"
 
 # # Add Samba firewall rule
 # ./v-add-firewall-rule ACCEPT 0.0.0.0/0 445 TCP SMB
