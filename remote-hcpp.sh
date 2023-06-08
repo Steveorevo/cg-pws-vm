@@ -122,6 +122,37 @@ appFolder /media/appFolder 9p _netdev,trans=virtio,version=9p2000.L,msize=104857
 
 EOT
 
+# Add our public key copy script at bootup
+cat <<EOT >> /usr/local/bin/copy_ssh_keys.sh
+#!/bin/bash
+
+# Wait for the mount point to be available
+while [ ! -d "/media/appFolder" ]; do
+    sleep 1
+done
+
+# Copy the SSH host keys to the mount point
+cp /etc/ssh/ssh_host_ecdsa_key.pub /media/appFolder/ssh_host_ecdsa_key.pub
+cp /etc/ssh/ssh_host_rsa_key.pub /media/appFolder/ssh_host_rsa_key.pub
+
+EOT
+chmod +x /usr/local/bin/copy_ssh_keys.sh
+cat <<EOT >> /etc/systemd/system/copy_ssh_keys.service
+[Unit]
+Description=Copy SSH host keys to /media/appFolder
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sleep 10
+ExecStart=/usr/local/bin/copy_ssh_keys.sh
+
+[Install]
+WantedBy=multi-user.target
+
+EOT
+systemctl enable copy_ssh_keys.service
+
 # Shutdown the server
 echo "Shutting down the server."
 shutdown now
