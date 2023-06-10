@@ -18,7 +18,6 @@ mv hestiacp-pluginable/hooks /etc/hestiacp
 rm -rf hestiacp-pluginable-main
 /etc/hestiacp/hooks/post_install.sh
 service hestia restart
-exit
 
 # Install HCPP NodeApp
 cd /usr/local/hestia/plugins
