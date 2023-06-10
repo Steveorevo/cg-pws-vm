@@ -89,7 +89,7 @@ CRON_JOBS=unlimited
 DISK_QUOTA=unlimited
 BANDWIDTH=unlimited
 NS=ns1.dev.cc,ns2.dev.cc
-SHELL=bash
+SHELL=/bin/bash
 BACKUPS=0
 EOT
 ./v-add-user-package /tmp/pws.txt pws
