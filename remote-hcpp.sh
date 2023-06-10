@@ -72,25 +72,25 @@ touch "/usr/local/hestia/data/hcpp/installed/ghost"
 # Create our pws user and package
 cd /usr/local/hestia/bin
 cat <<EOT >> /tmp/pws.txt
-PACKAGE=pws
-WEB_TEMPLATE=default
-BACKEND_TEMPLATE=default
-PROXY_TEMPLATE=default
-DNS_TEMPLATE=default
-WEB_DOMAINS=unlimited
-WEB_ALIASES=unlimited
-DNS_DOMAINS=unlimited
-DNS_RECORDS=unlimited
-MAIL_DOMAINS=unlimited
-MAIL_ACCOUNTS=unlimited
-RATE_LIMIT=200
-DATABASES=unlimited
-CRON_JOBS=unlimited
-DISK_QUOTA=unlimited
-BANDWIDTH=unlimited
-NS=ns1.dev.cc,ns2.dev.cc
-SHELL=/bin/bash
-BACKUPS=0
+PACKAGE='pws'
+WEB_TEMPLATE='default'
+BACKEND_TEMPLATE='default'
+PROXY_TEMPLATE='default'
+DNS_TEMPLATE='default'
+WEB_DOMAINS='unlimited'
+WEB_ALIASES='unlimited'
+DNS_DOMAINS='unlimited'
+DNS_RECORDS='unlimited'
+MAIL_DOMAINS='unlimited'
+MAIL_ACCOUNTS='unlimited'
+RATE_LIMIT='200'
+DATABASES='unlimited'
+CRON_JOBS='unlimited'
+DISK_QUOTA='unlimited'
+BANDWIDTH='unlimited'
+NS='ns1.dev.cc,ns2.dev.cc'
+SHELL='bash'
+BACKUPS='0'
 EOT
 ./v-add-user-package /tmp/pws.txt pws
 ./v-add-user pws personal-web-server pws@dev.cc pws "Personal Web Server"
