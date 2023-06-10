@@ -95,6 +95,7 @@ EOT
 ./v-add-user-package /tmp/pws.txt pws
 ./v-add-user pws personal-web-server pws@dev.cc pws "Personal Web Server"
 ./v-update-user-package pws
+chsh -s /bin/bash pws
 
 # # Add Samba firewall rule
 # ./v-add-firewall-rule ACCEPT 0.0.0.0/0 445 TCP SMB
@@ -107,7 +108,6 @@ EOT
 # /home/pws/web *(rw,sync,no_subtree_check)
 
 # EOT
-
 
 # # Add NFS firewall rule
 # ./v-add-firewall-rule ACCEPT 0.0.0.0/0 2049 TCP SMB
