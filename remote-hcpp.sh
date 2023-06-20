@@ -97,22 +97,6 @@ EOT
 ./v-update-user-package pws
 chsh -s /bin/bash pws
 
-# # Add Samba firewall rule
-# ./v-add-firewall-rule ACCEPT 0.0.0.0/0 445 TCP SMB
-# ./v-update-firewall
-
-# # Add NFS exports
-# cat <<EOT >> /etc/exports
-
-# # Personal Web Server web folder
-# /home/pws/web *(rw,sync,no_subtree_check)
-
-# EOT
-
-# # Add NFS firewall rule
-# ./v-add-firewall-rule ACCEPT 0.0.0.0/0 2049 TCP SMB
-# ./v-update-firewall
-
 # Add the virtio pws appFolder mount point
 mkdir -p /media/appFolder
 cat <<EOT >> /etc/fstab
@@ -152,6 +136,39 @@ WantedBy=multi-user.target
 
 EOT
 systemctl enable copy_ssh_keys.service
+
+# Customize our SSH login message
+: > /etc/update-motd.d/00-uname
+cat <<EOT >> /etc/update-motd.d/00-uname
+#!/bin/sh
+echo \\e[2J\\e[\;H
+clear
+echo "\e[32m"
+echo "                      888"
+echo "\e[0m   Virtuosoft\e[32m         888"
+cat << "EOF"
+                      888                           
+ .d8888b .d88b.   .d88888  .d88b.                   
+d88P"   d88""88b d88" 888 d8P  Y8b                  
+888     888  888 888  888 88888888                  
+Y88b.   Y88..88P Y88b 888 Y8b.          888         
+ "Y8888P "Y88P"   "Y88888  "Y8888       888         
+                                        888
+           .d88b.   8888b.  888d888 .d88888  .d88b.  88888b.  
+          d88P"88b     "88b 888P"  d88" 888 d8P  Y8b 888 "88b 
+          888  888 .d888888 888    888  888 88888888 888  888 
+          Y88b 888 888  888 888    Y88b 888 Y8b.     888  888 
+           "Y88888 "Y888888 888     "Y88888  "Y8888  888  888 
+               888                                            
+EOF
+echo "          Y8b d88P \e[0m Personal Web Server Edition\e[32m"
+cat << "EOF"
+           "Y88P"   
+EOF
+echo "\e[0m"
+uname -snrvm
+EOT
+chmod +x /etc/update-motd.d/00-uname
 
 # Shutdown the server
 echo "Shutting down the server."
