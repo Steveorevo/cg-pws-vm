@@ -144,7 +144,7 @@ printf '%b\n' '\033[2J\033[:H'
 clear
 echo "\e[32m"
 echo "                      888"
-echo "\e[0m   Virtuosoft\e[32m         888"
+echo "\e[0m   Welcome to\e[32m         888"
 cat << "EOF"
                       888                           
  .d8888b .d88b.   .d88888  .d88b.                   
@@ -161,9 +161,7 @@ Y88b.   Y88..88P Y88b 888 Y8b.          888
                888                                            
 EOF
 echo "          Y8b d88P \e[0m Personal Web Server Edition\e[32m"
-cat << "EOF"
-           "Y88P"   
-EOF
+echo "           "Y88P" \e[0m        (c) Virtuosoft 2023\e[32m"
 echo "\e[0m"
 EOT
 chmod +x /etc/update-motd.d/00-header
