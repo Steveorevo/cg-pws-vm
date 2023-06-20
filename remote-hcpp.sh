@@ -138,10 +138,9 @@ EOT
 systemctl enable copy_ssh_keys.service
 
 # Customize our SSH login message
-: > /etc/update-motd.d/00-uname
-cat <<EOT >> /etc/update-motd.d/00-uname
+cat <<EOT >> /etc/update-motd.d/00-header
 #!/bin/sh
-echo \\e[2J\\e[\;H
+printf '%b\n' '\033[2J\033[:H'
 clear
 echo "\e[32m"
 echo "                      888"
@@ -166,9 +165,9 @@ cat << "EOF"
            "Y88P"   
 EOF
 echo "\e[0m"
-uname -snrvm
 EOT
-chmod +x /etc/update-motd.d/00-uname
+chmod +x /etc/update-motd.d/00-header
+: > /etc/motd
 
 # Shutdown the server
 echo "Shutting down the server."
