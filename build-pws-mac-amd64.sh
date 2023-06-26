@@ -92,7 +92,7 @@ fi
 
 # Run QEMU with the following options to start the debian installation process
 echo "Booting Debian Linux installer..."
-cd build
+cd build || exit
 qemu-system-x86_64 \
         -machine q35,vmport=off -accel hvf \
         -cpu Haswell-v1 \
