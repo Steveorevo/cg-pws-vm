@@ -64,7 +64,7 @@ touch "/usr/local/hestia/data/hcpp/installed/ghost"
 
 # Install HCPP CG-PWS
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.2" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.3" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
 cd /usr/local/hestia/plugins/cg-pws
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/cg-pws"
