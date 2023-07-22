@@ -1,6 +1,6 @@
 @echo off
 ::
-:: Virtuosoft build script for Code Garden PWS (Personal Web Server) Edition
+:: Virtuosoft build script for CodeGarden PWS (Personal Web Server) Edition
 :: on Windows x86 64-bit compatible systems.
 ::
 

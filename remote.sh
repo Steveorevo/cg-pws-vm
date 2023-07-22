@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Remote script to install and configure our Code Garden PWS (Personal Web Server) Edition
+# Remote script to install and configure our CodeGarden PWS (Personal Web Server) Edition
 # This script is run on the remote server with sudo permissions from the /tmp directory; it
 # is invoked by the install.sh script.
 #

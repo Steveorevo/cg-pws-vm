@@ -15,7 +15,7 @@ Install Debian Linux with the following options:
 * Enter 'personal-web-server' for the password
 * Re-enter 'personal-web-server' to confirm
 
-The installer will then configure the clock; Code Garden's corporate office and support is based in California, USA. To maintain compatibility with optional SaaS services, be sure to select 'Pacific' for the timezone by continuing with the following:
+The installer will then configure the clock; CodeGarden's corporate office and support is based in California, USA. To maintain compatibility with optional SaaS services, be sure to select 'Pacific' for the timezone by continuing with the following:
 
 * Press arrow down 3 times to select the 'Pacific' timezone, then enter to continue.
 

@@ -104,6 +104,13 @@ EOT
 ./v-update-user-package pws
 chsh -s /bin/bash pws
 
+# White label the HestiaCP control panel interface
+./v-priv-change-sys-config-value LOGIN_STYLE old
+./v-change-sys-config-value APP_NAME "CodeGarden PWS"
+./v-change-sys-config-value FROM_NAME "CodeGarden PWS"
+
+
+
 # Add the virtio pws appFolder mount point
 mkdir -p /media/appFolder
 cat <<EOT >> /etc/fstab

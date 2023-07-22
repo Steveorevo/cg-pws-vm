@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Virtuosoft build script for Code Garden PWS (Personal Web Server) Edition
+# Virtuosoft build script for CodeGarden PWS (Personal Web Server) Edition
 # on macOS x86 64-bit compatible systems.
 #
 

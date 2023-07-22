@@ -23,7 +23,7 @@ sshpass -p "$remote_password" scp -o StrictHostKeyChecking=no -P "$remote_port" 
 
 # SSH connection and script execution with sudo
 sshpass -p "$remote_password" ssh -o StrictHostKeyChecking=no -p "$remote_port" $remote_user@$remote_host "echo '$remote_password' | sudo -S bash $remote_script_file"
-echo "Finished install HCPP components for Code Garden PWS Edition"
+echo "Finished install HCPP components for CodeGarden PWS Edition"
 sleep 3
 echo ""
 echo "Now compressing resulting files for redistribution"
