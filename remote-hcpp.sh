@@ -109,8 +109,6 @@ chsh -s /bin/bash pws
 ./v-change-sys-config-value APP_NAME "CodeGarden PWS"
 ./v-change-sys-config-value FROM_NAME "CodeGarden PWS"
 
-
-
 # Add the virtio pws appFolder mount point
 mkdir -p /media/appFolder
 cat <<EOT >> /etc/fstab
