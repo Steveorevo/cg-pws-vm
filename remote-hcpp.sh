@@ -13,7 +13,7 @@ sleep 1
 
 # Install HestiaCP Pluginable project
 cd /tmp
-git clone --depth 1 --branch "v1.0.0-beta.18" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.19" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
 mv hestiacp-pluginable/hooks /etc/hestiacp
 rm -rf hestiacp-pluginable-main
 /etc/hestiacp/hooks/post_install.sh
@@ -35,7 +35,7 @@ touch "/usr/local/hestia/data/hcpp/installed/nodered"
 
 # Install HCPP MailCatcher
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.5" https://github.com/virtuosoft-dev/hcpp-mailcatcher.git mailcatcher 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.6" https://github.com/virtuosoft-dev/hcpp-mailcatcher.git mailcatcher 2>/dev/null
 cd /usr/local/hestia/plugins/mailcatcher
 ./install
 php -r 'require_once("/usr/local/hestia/web/pluginable.php");global $hcpp;$hcpp->do_action("hcpp_plugin_installed", "mailcatcher");'
@@ -64,17 +64,17 @@ touch "/usr/local/hestia/data/hcpp/installed/ghost"
 
 # Install HCPP CG-PWS
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.4" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.5" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
 cd /usr/local/hestia/plugins/cg-pws
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/cg-pws"
 
-# # Install HCPP WebDAV
-# cd /usr/local/hestia/plugins
-# git clone --depth 1 --branch "v0.0.1" https://github.com/virtuosoft-dev/hcpp-webdav.git webdav 2>/dev/null
-# cd /usr/local/hestia/plugins/webdav
-# ./install
-# touch "/usr/local/hestia/data/hcpp/installed/webdav"
+# Install HCPP WebDAV
+cd /usr/local/hestia/plugins
+git clone --depth 1 --branch "v1.0.0-beta.1" https://github.com/virtuosoft-dev/hcpp-webdav.git webdav 2>/dev/null
+cd /usr/local/hestia/plugins/webdav
+./install
+touch "/usr/local/hestia/data/hcpp/installed/webdav"
 
 # Create our pws user and package
 cd /usr/local/hestia/bin
