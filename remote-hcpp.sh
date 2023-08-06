@@ -179,6 +179,22 @@ EOT
 chmod +x /etc/update-motd.d/00-header
 : > /etc/motd
 
+# Resolve localhost to control panel URL and update certificate
+v-add-web-domain-alias admin local.dev.cc localhost no
+rm -f /home/admin/web/local.dev.cc/public_html/index.html
+cat <<EOT >> /home/admin/web/local.dev.cc/public_html/index.php
+<?php
+\$content = shell_exec('cat /usr/local/hestia/nginx/conf/nginx.conf');
+\$port = "8083";
+if (preg_match('/\blisten\s+(\d+)\s+ssl\b/', \$content, \$matches)) {
+    \$port = \$matches[1];
+}
+\$redirectURL = "https://local.dev.cc:" . \$port;
+header("Location: " . \$redirectURL);
+exit;
+EOT
+./v-invoke-plugin regenerate_certificates
+
 # Shutdown the server
 echo "Shutting down the server."
 shutdown now
