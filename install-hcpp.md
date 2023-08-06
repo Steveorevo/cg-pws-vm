@@ -14,6 +14,8 @@ The HCPP installation process will automatically install each of the repos liste
 * [HCPP-NodeRED](https://github.com/virtuosoft-dev/hcpp-nodered)
 * [HCPP-NodeBB](https://github.com/virtuosoft-dev/hcpp-nodebb)
 * [HCPP-Ghost](https://github.com/virtuosoft-dev/hcpp-ghost)
+* [HCPP-WebDAV](https://github.com/virtuosoft-dev/hcpp-webdav)
+* [HCPP-Quickstart](https://github.com/virtuosoft-dev/hcpp-quickstart)
 
 After the aforementioned HCPP plugins are installed the VM will automatically shutdown.
 
