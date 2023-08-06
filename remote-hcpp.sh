@@ -174,7 +174,7 @@ asciiart="\e[38;5;244m Welcome to                            �
 \e[38;5;244m                    Personal Web Server Edition
 \e[38;5;244m                        (c) Virtuosoft 2023
 \e[38;5;244m "
-echo -e "$asciiart"
+echo -e "\$asciiart"
 EOT
 chmod +x /etc/update-motd.d/00-header
 : > /etc/motd
@@ -182,6 +182,3 @@ chmod +x /etc/update-motd.d/00-header
 # Shutdown the server
 echo "Shutting down the server."
 shutdown now
-
-
-                            ██▄   ▐██  ██▀└██  ╟█▌   ▐██  ╟█
