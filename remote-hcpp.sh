@@ -193,7 +193,7 @@ if (preg_match('/\blisten\s+(\d+)\s+ssl\b/', \$content, \$matches)) {
 header("Location: " . \$redirectURL);
 exit;
 EOT
-./v-invoke-plugin regenerate_certificates
+./v-invoke-plugin cg_pws_regenerate_certificates
 
 # Shutdown the server
 echo "Shutting down the server."
