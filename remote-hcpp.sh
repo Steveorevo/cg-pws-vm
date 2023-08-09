@@ -13,7 +13,7 @@ sleep 1
 
 # Install HestiaCP Pluginable project
 cd /tmp
-git clone --depth 1 --branch "v1.0.0-beta.20" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.21" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
 mv hestiacp-pluginable/hooks /etc/hestiacp
 rm -rf hestiacp-pluginable-main
 /etc/hestiacp/hooks/post_install.sh
@@ -64,7 +64,7 @@ touch "/usr/local/hestia/data/hcpp/installed/ghost"
 
 # Install HCPP CG-PWS
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.6" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.7" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
 cd /usr/local/hestia/plugins/cg-pws
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/cg-pws"
