@@ -41,6 +41,13 @@ cd /usr/local/hestia/plugins/mailcatcher
 php -r 'require_once("/usr/local/hestia/web/pluginable.php");global $hcpp;$hcpp->do_action("hcpp_plugin_installed", "mailcatcher");'
 touch "/usr/local/hestia/data/hcpp/installed/mailcatcher"
 
+# Install HCPP CG-PWS
+cd /usr/local/hestia/plugins
+git clone --depth 1 --branch "v1.0.0-beta.8" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
+cd /usr/local/hestia/plugins/cg-pws
+./install
+touch "/usr/local/hestia/data/hcpp/installed/cg-pws"
+
 # Install HCPP VSCode
 cd /usr/local/hestia/plugins
 git clone --depth 1 --branch "v1.0.0-beta.7" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode 2>/dev/null
@@ -61,13 +68,6 @@ git clone --depth 1 --branch "v1.0.0-beta.3" https://github.com/virtuosoft-dev/h
 cd /usr/local/hestia/plugins/ghost
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/ghost"
-
-# Install HCPP CG-PWS
-cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.7" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
-cd /usr/local/hestia/plugins/cg-pws
-./install
-touch "/usr/local/hestia/data/hcpp/installed/cg-pws"
 
 # Install HCPP WebDAV
 cd /usr/local/hestia/plugins
