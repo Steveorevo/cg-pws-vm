@@ -195,6 +195,9 @@ exit;
 EOT
 ./v-invoke-plugin cg_pws_regenerate_certificates
 
+# Backup hcpp.log for review
+cp /tmp/hcpp.log /home/debian/hcpp.log
+
 # Shutdown the server
 echo "Shutting down the server."
 shutdown now
