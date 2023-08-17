@@ -103,6 +103,7 @@ EOT
 ./v-add-user pws personal-web-server pws@dev.cc pws "Personal Web Server"
 ./v-update-user-package pws
 chsh -s /bin/bash pws
+v-add-user-composer pws
 
 # White label the HestiaCP control panel interface
 ./v-priv-change-sys-config-value LOGIN_STYLE old
