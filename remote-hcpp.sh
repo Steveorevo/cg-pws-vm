@@ -103,7 +103,7 @@ EOT
 ./v-add-user pws personal-web-server pws@dev.cc pws "Personal Web Server"
 ./v-update-user-package pws
 chsh -s /bin/bash pws
-v-add-user-composer pws
+./v-add-user-composer pws
 
 # White label the HestiaCP control panel interface
 ./v-priv-change-sys-config-value LOGIN_STYLE old
@@ -181,7 +181,7 @@ chmod +x /etc/update-motd.d/00-header
 : > /etc/motd
 
 # Resolve localhost to control panel URL and update certificate
-v-add-web-domain-alias admin local.dev.cc localhost no
+./v-add-web-domain-alias admin local.dev.cc localhost no
 rm -f /home/admin/web/local.dev.cc/public_html/index.html
 cat <<EOT >> /home/admin/web/local.dev.cc/public_html/index.php
 <?php
