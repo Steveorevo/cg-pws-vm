@@ -195,6 +195,63 @@ header("Location: " . \$redirectURL);
 exit;
 EOT
 ./v-invoke-plugin cg_pws_regenerate_certificates
+./v-invoke-plugin cg_pws_regenerate_ssh_keys
+
+# Install Samba with PWS share
+apt install -y samba
+cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+cat <<EOT >> /etc/samba/smb.conf
+[global]
+   workgroup = WORKGROUP
+   log file = /var/log/samba/log.%m
+
+   max log size = 1000
+   logging = file
+   panic action = /usr/share/samba/panic-action %d
+   server role = standalone server
+   obey pam restrictions = yes
+   unix password sync = yes
+   passwd program = /usr/bin/passwd %u
+   passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+   pam password change = yes
+   map to guest = bad user
+   usershare allow guests = yes
+
+#======================= Share Definitions =======================
+
+[homes]
+   comment = Home Directories
+   browseable = no
+   read only = no
+   create mask = 0700
+   directory mask = 0700
+   valid users = %S
+
+[printers]
+   comment = All Printers
+   browseable = no
+   path = /var/spool/samba
+   printable = yes
+   guest ok = no
+   read only = yes
+   create mask = 0700
+
+[print$]
+   comment = Printer Drivers
+   path = /var/lib/samba/printers
+   browseable = yes
+   read only = yes
+   guest ok = no
+
+[PWS]
+   comment = PWS files
+   read only = no
+   path = /home/pws/web
+   guest ok = no
+   directory mask = 0755
+   create mask = 0644
+EOT
+./v-add-firewall-rule ACCEPT 0.0.0.0\/0 445 TCP SMB
 
 # Backup hcpp.log for review
 cp /tmp/hcpp.log /home/debian/hcpp.log
