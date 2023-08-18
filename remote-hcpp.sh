@@ -104,6 +104,7 @@ EOT
 ./v-update-user-package pws
 chsh -s /bin/bash pws
 ./v-add-user-composer pws
+./v-add-user-wp-cli pws
 
 # White label the HestiaCP control panel interface
 ./v-priv-change-sys-config-value LOGIN_STYLE old
@@ -129,8 +130,12 @@ while [ ! -d "/media/appFolder" ]; do
 done
 
 # Copy the SSH host keys to the mount point
-cp /etc/ssh/ssh_host_ecdsa_key.pub /media/appFolder/ssh_host_ecdsa_key.pub
-cp /etc/ssh/ssh_host_rsa_key.pub /media/appFolder/ssh_host_rsa_key.pub
+rm -rf /media/appFolder/security/ssh && mkdir -p /media/appFolder/security/ssh
+cp /etc/ssh/ssh_host_ecdsa_key.pub /media/appFolder/security/ssh/ssh_host_ecdsa_key.pub
+cp /etc/ssh/ssh_host_rsa_key.pub /media/appFolder/security/ssh/ssh_host_rsa_key.pub
+
+# Throw a reboot event to trigger the HCPP rebooted hook
+/usr/local/hestia/bin/v-invoke-plugin hcpp_rebooted
 
 EOT
 chmod +x /usr/local/bin/copy_ssh_keys.sh
