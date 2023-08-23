@@ -160,7 +160,11 @@ cat <<EOT >> /home/admin/web/local.dev.cc/public_html/index.php
 if (preg_match('/\blisten\s+(\d+)\s+ssl\b/', \$content, \$matches)) {
     \$port = \$matches[1];
 }
-\$redirectURL = "https://local.dev.cc:" . \$port;
+\$alt = "";
+if ( isset( \$_GET['alt'] ) ) {
+   \$alt = '/?alt=' . \$_GET['alt'];
+}
+\$redirectURL = "https://local.dev.cc:" . \$port . \$alt;
 header("Location: " . \$redirectURL);
 exit;
 EOT
