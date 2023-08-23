@@ -162,12 +162,13 @@ if (preg_match('/\blisten\s+(\d+)\s+ssl\b/', \$content, \$matches)) {
 }
 \$alt = "";
 if ( isset( \$_GET['alt'] ) ) {
-   \$alt = '/?alt=' . \$_GET['alt'];
+   \$alt = '/login/?alt=' . \$_GET['alt'];
 }
 \$redirectURL = "https://local.dev.cc:" . \$port . \$alt;
 header("Location: " . \$redirectURL);
 exit;
 EOT
+chown admin:admin /home/admin/web/local.dev.cc/public_html/index.php
 ./v-invoke-plugin cg_pws_regenerate_certificates
 ./v-invoke-plugin cg_pws_regenerate_ssh_keys
 
