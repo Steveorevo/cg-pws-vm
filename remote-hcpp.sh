@@ -43,7 +43,7 @@ touch "/usr/local/hestia/data/hcpp/installed/mailcatcher"
 
 # Install HCPP CG-PWS
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.21" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.22" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
 cd /usr/local/hestia/plugins/cg-pws
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/cg-pws"
@@ -75,6 +75,13 @@ git clone --depth 1 --branch "v1.0.0-beta.3" https://github.com/virtuosoft-dev/h
 cd /usr/local/hestia/plugins/webdav
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/webdav"
+
+# Install HCPP Quickstart
+cd /usr/local/hestia/plugins
+git clone --depth 1 --branch "v1.0.0-beta.1" https://github.com/virtuosoft-dev/hcpp-quickstart.git quickstart 2>/dev/null
+cd /usr/local/hestia/plugins/quickstart
+./install
+touch "/usr/local/hestia/data/hcpp/installed/quickstart"
 
 # Create our pws user and package
 cd /usr/local/hestia/bin
@@ -150,25 +157,8 @@ EOT
 chmod +x /etc/update-motd.d/00-header
 : > /etc/motd
 
-# Resolve localhost to control panel URL and update certificate
+# Add localhost alias to admin's local.dev.cc domain
 ./v-add-web-domain-alias admin local.dev.cc localhost no
-rm -f /home/admin/web/local.dev.cc/public_html/index.html
-cat <<EOT >> /home/admin/web/local.dev.cc/public_html/index.php
-<?php
-\$content = shell_exec('cat /usr/local/hestia/nginx/conf/nginx.conf');
-\$port = "8083";
-if (preg_match('/\blisten\s+(\d+)\s+ssl\b/', \$content, \$matches)) {
-    \$port = \$matches[1];
-}
-\$alt = "";
-if ( isset( \$_GET['alt'] ) ) {
-   \$alt = '/login/?alt=' . \$_GET['alt'];
-}
-\$redirectURL = "https://local.dev.cc:" . \$port . \$alt;
-header("Location: " . \$redirectURL);
-exit;
-EOT
-chown admin:admin /home/admin/web/local.dev.cc/public_html/index.php
 ./v-invoke-plugin cg_pws_regenerate_certificates
 ./v-invoke-plugin cg_pws_regenerate_ssh_keys
 
