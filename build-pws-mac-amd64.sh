@@ -66,9 +66,7 @@ else
 fi
 
 # Check if ISO file already exists
-#ISO_URL="https://cdimage.debian.org/cdimage/archive/11.7.0/amd64/iso-cd/debian-11.7.0-amd64-netinst.iso"
 ISO_URL="https://cdimage.debian.org/cdimage/archive/12.0.0/amd64/iso-cd/debian-12.0.0-amd64-netinst.iso"
-#ISO_FILENAME="debian-11.7.0-amd64-netinst.iso"
 ISO_FILENAME="debian-12.0.0-amd64-netinst.iso"
 if [ ! -f "build/$ISO_FILENAME" ]; then
     echo "Downloading Debian ISO..."
@@ -104,7 +102,7 @@ qemu-system-x86_64 \
         -display default,show-cursor=on \
         -drive if=pflash,format=raw,file=efi_amd64.img,readonly=on \
         -drive if=pflash,format=raw,file=efi_amd64_vars.img,readonly=on \
-        -cdrom debian-11.7.0-amd64-netinst.iso \
+        -cdrom $ISO_FILENAME \
         -device virtio-net-pci,netdev=net0 \
         -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
         -drive if=virtio,format=qcow2,file=pws-amd64.img \
