@@ -104,7 +104,7 @@ DISK_QUOTA='unlimited'
 BANDWIDTH='unlimited'
 NS='ns1.dev.cc,ns2.dev.cc'
 SHELL='bash'
-BACKUPS='0'
+BACKUPS='365'
 EOT
 ./v-add-user-package /tmp/pws.txt pws
 ./v-add-user pws personal-web-server pws@dev.cc pws "Personal Web Server"
