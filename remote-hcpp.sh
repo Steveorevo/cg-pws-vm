@@ -218,6 +218,9 @@ cat <<EOT >> /etc/samba/smb.conf
 EOT
 ./v-add-firewall-rule ACCEPT 0.0.0.0\/0 445 TCP SMB
 
+# Set the default PWS share password
+(echo "personal-web-server"; echo "personal-web-server") | smbpasswd -s -a "pws"
+
 # Backup hcpp.log for review
 cp /tmp/hcpp.log /home/debian/hcpp.log
 
