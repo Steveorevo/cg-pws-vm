@@ -40,9 +40,10 @@ sed -i "${line_number}i\\${line_to_add}" "$temp_file"
 cp "$temp_file" /lib/systemd/system/nginx.service
 rm "$temp_file"
 
-# Add ll alias
+# Add ll, wp alias
 cat <<EOT >> /etc/bash.bashrc
 alias ll='ls -alF'
+alias wp='~/.wp-cli/wp'
 EOT
 
 # Reboot the server
