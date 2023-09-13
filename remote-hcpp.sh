@@ -113,6 +113,10 @@ chsh -s /bin/bash pws
 ./v-add-user-composer pws
 ./v-add-user-wp-cli pws
 
+# Add ll, wp aliases for pws
+echo "alias composer=/home/pws/.wp-cli/wp" >> /home/pws/.bash_aliases
+echo "alias ll='ls -alF'" >> /home/pws/.bash_aliases
+
 # White label the HestiaCP control panel interface
 ./v-priv-change-sys-config-value LOGIN_STYLE old
 ./v-change-sys-config-value APP_NAME "CodeGarden PWS"
