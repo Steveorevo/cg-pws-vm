@@ -57,7 +57,7 @@ touch "/usr/local/hestia/data/hcpp/installed/vscode"
 
 # Install HCPP NodeBB
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.6" https://github.com/virtuosoft-dev/hcpp-nodebb.git nodebb 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.7" https://github.com/virtuosoft-dev/hcpp-nodebb.git nodebb 2>/dev/null
 cd /usr/local/hestia/plugins/nodebb
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodebb"
