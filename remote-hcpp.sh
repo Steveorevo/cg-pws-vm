@@ -114,7 +114,7 @@ chsh -s /bin/bash pws
 ./v-add-user-wp-cli pws
 
 # Add ll, wp aliases for pws
-echo "alias composer=/home/pws/.wp-cli/wp" >> /home/pws/.bash_aliases
+echo "alias wp=/home/pws/.wp-cli/wp" >> /home/pws/.bash_aliases
 echo "alias ll='ls -alF'" >> /home/pws/.bash_aliases
 
 # White label the HestiaCP control panel interface
