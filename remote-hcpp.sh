@@ -28,7 +28,7 @@ touch "/usr/local/hestia/data/hcpp/installed/nodeapp"
 
 # Install HCPP NodeRED
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.3" https://github.com/virtuosoft-dev/hcpp-nodered.git nodered 2>/dev/null
+git clone --depth 1 --branch "v1.0.4" https://github.com/virtuosoft-dev/hcpp-nodered.git nodered 2>/dev/null
 cd /usr/local/hestia/plugins/nodered
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodered"
@@ -50,7 +50,7 @@ touch "/usr/local/hestia/data/hcpp/installed/cg-pws"
 
 # Install HCPP VSCode
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.8" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.9" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode 2>/dev/null
 cd /usr/local/hestia/plugins/vscode
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/vscode"
