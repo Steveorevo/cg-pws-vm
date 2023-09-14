@@ -112,6 +112,7 @@ EOT
 chsh -s /bin/bash pws
 ./v-add-user-composer pws
 ./v-add-user-wp-cli pws
+./v-change-sys-config-value POLICY_USER_EDIT_WEB_TEMPLATES yes
 
 # Add ll, wp aliases for pws
 echo "alias wp=/home/pws/.wp-cli/wp" >> /home/pws/.bash_aliases
