@@ -25,6 +25,7 @@ git clone --depth 1 --branch "v1.0.0-beta.10" https://github.com/virtuosoft-dev/
 cd /usr/local/hestia/plugins/nodeapp
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodeapp"
+export PATH=/opt/nvm:/opt/nvm/versions/node/v20.6.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/hestia/bin
 
 # Install HCPP NodeRED
 cd /usr/local/hestia/plugins
@@ -228,6 +229,9 @@ EOT
 
 # Backup hcpp.log for review
 cp /tmp/hcpp.log /home/debian/hcpp.log
+
+# Cleanup
+apt-get autoremove -y
 
 # Shutdown the server
 echo "Shutting down the server."
