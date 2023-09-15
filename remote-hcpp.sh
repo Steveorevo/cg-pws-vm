@@ -21,11 +21,11 @@ service hestia restart
 
 # Install HCPP NodeApp
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.10" https://github.com/virtuosoft-dev/hcpp-nodeapp.git nodeapp 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.11" https://github.com/virtuosoft-dev/hcpp-nodeapp.git nodeapp 2>/dev/null
 cd /usr/local/hestia/plugins/nodeapp
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodeapp"
-export PATH=/opt/nvm:/opt/nvm/versions/node/v20.6.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/hestia/bin
+export NVM_DIR=/opt/nvm && source /opt/nvm/nvm.sh
 
 # Install HCPP NodeRED
 cd /usr/local/hestia/plugins
@@ -58,7 +58,7 @@ touch "/usr/local/hestia/data/hcpp/installed/vscode"
 
 # Install HCPP NodeBB
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.7" https://github.com/virtuosoft-dev/hcpp-nodebb.git nodebb 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.8" https://github.com/virtuosoft-dev/hcpp-nodebb.git nodebb 2>/dev/null
 cd /usr/local/hestia/plugins/nodebb
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodebb"
@@ -79,7 +79,7 @@ touch "/usr/local/hestia/data/hcpp/installed/webdav"
 
 # Install HCPP Quickstart
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.5" https://github.com/virtuosoft-dev/hcpp-quickstart.git quickstart 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.6" https://github.com/virtuosoft-dev/hcpp-quickstart.git quickstart 2>/dev/null
 cd /usr/local/hestia/plugins/quickstart
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/quickstart"
