@@ -19,6 +19,13 @@ rm -rf hestiacp-pluginable-main
 /etc/hestiacp/hooks/post_install.sh
 service hestia restart
 
+# Install HCPP CG-PWS
+cd /usr/local/hestia/plugins
+git clone --depth 1 --branch "v1.0.0-beta.25" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
+cd /usr/local/hestia/plugins/cg-pws
+./install
+touch "/usr/local/hestia/data/hcpp/installed/cg-pws"
+
 # Install HCPP NodeApp
 cd /usr/local/hestia/plugins
 git clone --depth 1 --branch "v1.0.0-beta.11" https://github.com/virtuosoft-dev/hcpp-nodeapp.git nodeapp 2>/dev/null
@@ -41,20 +48,6 @@ cd /usr/local/hestia/plugins/mailcatcher
 ./install
 php -r 'require_once("/usr/local/hestia/web/pluginable.php");global $hcpp;$hcpp->do_action("hcpp_plugin_installed", "mailcatcher");'
 touch "/usr/local/hestia/data/hcpp/installed/mailcatcher"
-
-# Install HCPP CG-PWS
-cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.25" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
-cd /usr/local/hestia/plugins/cg-pws
-./install
-touch "/usr/local/hestia/data/hcpp/installed/cg-pws"
-
-# Install HCPP VSCode
-cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.9" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode 2>/dev/null
-cd /usr/local/hestia/plugins/vscode
-./install
-touch "/usr/local/hestia/data/hcpp/installed/vscode"
 
 # Install HCPP NodeBB
 cd /usr/local/hestia/plugins
@@ -83,6 +76,13 @@ git clone --depth 1 --branch "v1.0.0-beta.6" https://github.com/virtuosoft-dev/h
 cd /usr/local/hestia/plugins/quickstart
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/quickstart"
+
+# Install HCPP VSCode
+cd /usr/local/hestia/plugins
+git clone --depth 1 --branch "v1.0.0-beta.10" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode 2>/dev/null
+cd /usr/local/hestia/plugins/vscode
+./install
+touch "/usr/local/hestia/data/hcpp/installed/vscode"
 
 # Create our pws user and package
 cd /usr/local/hestia/bin
