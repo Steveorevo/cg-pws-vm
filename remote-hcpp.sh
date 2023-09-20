@@ -28,7 +28,7 @@ touch "/usr/local/hestia/data/hcpp/installed/cg-pws"
 
 # Install HCPP NodeApp
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.12" https://github.com/virtuosoft-dev/hcpp-nodeapp.git nodeapp 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.13" https://github.com/virtuosoft-dev/hcpp-nodeapp.git nodeapp 2>/dev/null
 cd /usr/local/hestia/plugins/nodeapp
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodeapp"
@@ -36,7 +36,7 @@ export NVM_DIR=/opt/nvm && source /opt/nvm/nvm.sh
 
 # Install HCPP NodeRED
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.5" https://github.com/virtuosoft-dev/hcpp-nodered.git nodered 2>/dev/null
+git clone --depth 1 --branch "v1.0.6" https://github.com/virtuosoft-dev/hcpp-nodered.git nodered 2>/dev/null
 cd /usr/local/hestia/plugins/nodered
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodered"
@@ -51,14 +51,14 @@ touch "/usr/local/hestia/data/hcpp/installed/mailcatcher"
 
 # Install HCPP NodeBB
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.10" https://github.com/virtuosoft-dev/hcpp-nodebb.git nodebb 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.11" https://github.com/virtuosoft-dev/hcpp-nodebb.git nodebb 2>/dev/null
 cd /usr/local/hestia/plugins/nodebb
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodebb"
 
 # Install HCPP Ghost
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.6" https://github.com/virtuosoft-dev/hcpp-ghost.git ghost 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.7" https://github.com/virtuosoft-dev/hcpp-ghost.git ghost 2>/dev/null
 cd /usr/local/hestia/plugins/ghost
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/ghost"
