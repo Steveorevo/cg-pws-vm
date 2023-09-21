@@ -21,7 +21,7 @@ service hestia restart
 
 # Install HCPP CG-PWS
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.28" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.29" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
 cd /usr/local/hestia/plugins/cg-pws
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/cg-pws"
@@ -168,6 +168,10 @@ chmod +x /etc/update-motd.d/00-header
 ./v-invoke-plugin cg_pws_regenerate_certificates
 ./v-invoke-plugin cg_pws_regenerate_ssh_keys
 
+# Disable automatic updates for now
+./v-delete-cron-hestia-autoupdate
+./v-restart-cron
+
 # Install Samba with PWS share
 apt install -y samba
 cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
@@ -223,9 +227,10 @@ cat <<EOT >> /etc/samba/smb.conf
    create mask = 0644
 EOT
 ./v-add-firewall-rule ACCEPT 0.0.0.0\/0 445 TCP SMB
+./v-add-sys-pma-sso
 
-# Set the default PWS share password
-(echo "personal-web-server"; echo "personal-web-server") | smbpasswd -s -a "pws"
+# Set the default passwords for Samba, HestiaCP, etc.
+/usr/local/hestia/plugins/cg-pws/update-password.sh "personal-web-server"
 
 # Backup hcpp.log for review
 cp /tmp/hcpp.log /home/debian/hcpp.log
