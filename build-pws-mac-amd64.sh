@@ -57,12 +57,20 @@ else
     echo "Build folder already exists."
 fi
 
-# Copy EFI over to build folder
-if [ ! -f "build/efi_amd64.img" ]; then
-    cp /usr/local/share/qemu/edk2-x86_64-code.fd build/efi_amd64.img
-    cat /usr/local/share/qemu/edk2-i386-vars.fd /usr/local/share/qemu/edk2-x86_64-code.fd > build/efi_amd64_vars.img
+## Copy EFI over to build folder
+#if [ ! -f "build/efi_amd64.img" ]; then
+#    cp /usr/local/share/qemu/edk2-x86_64-code.fd build/efi_amd64.img
+#    cat /usr/local/share/qemu/edk2-i386-vars.fd /usr/local/share/qemu/edk2-x86_64-code.fd > build/efi_amd64_vars.img
+#else
+#    echo "BIOS file already extracted."
+#fi
+
+# Check if BIOS file already exists
+if [ ! -f "build/bios.img" ]; then
+    echo "Copying BIOS file..."
+    cp /usr/local/share/qemu/bios.bin build/bios.img
 else
-    echo "BIOS file already extracted."
+    echo "BIOS file already copied."
 fi
 
 # Check if ISO file already exists
@@ -99,12 +107,13 @@ qemu-system-x86_64 \
         -smp cpus=4,sockets=1,cores=4,threads=1 \
         -m 4G \
         -vga virtio \
+        -bios bios.img \
         -display default,show-cursor=on \
-        -drive if=pflash,format=raw,file=efi_amd64.img,readonly=on \
-        -drive if=pflash,format=raw,file=efi_amd64_vars.img,readonly=on \
         -cdrom $ISO_FILENAME \
         -device virtio-net-pci,netdev=net0 \
         -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
         -drive if=virtio,format=qcow2,file=pws-amd64.img \
         -device virtio-balloon-pci
+        #-drive if=pflash,format=raw,file=efi_amd64.img,readonly=on \
+        #-drive if=pflash,format=raw,file=efi_amd64_vars.img,readonly=on \
 cd ..
