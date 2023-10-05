@@ -74,8 +74,8 @@ else
 fi
 
 # Check if ISO file already exists
-ISO_URL="https://cdimage.debian.org/cdimage/archive/12.0.0/amd64/iso-cd/debian-12.0.0-amd64-netinst.iso"
 ISO_FILENAME="debian-12.0.0-amd64-netinst.iso"
+ISO_URL="https://cdimage.debian.org/cdimage/archive/12.0.0/amd64/iso-cd/$ISO_FILENAME"
 if [ ! -f "build/$ISO_FILENAME" ]; then
     echo "Downloading Debian ISO..."
     curl -L -o "build/$ISO_FILENAME" "$ISO_URL"
@@ -84,7 +84,7 @@ else
     echo "Debian ISO already downloaded."
 fi
 
-## Create the virtual disk images with max ability at 2TB
+## Create the virtual disk images with the max abilitiy of 2TB
 if [ ! -f "build/pws-amd64.img" ]; then
     qemu-img create -f qcow2 build/pws-amd64.img 2000G
     echo "Virtual disk image created!"
