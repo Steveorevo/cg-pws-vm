@@ -103,7 +103,7 @@ echo "Booting Debian Linux installer..."
 cd build || exit
 qemu-system-x86_64 \
         -machine q35,vmport=off -accel hvf \
-        -cpu Haswell-v1 \
+        -cpu qemu64-v1 \
         -smp cpus=4,sockets=1,cores=4,threads=1 \
         -m 4G \
         -vga virtio \
