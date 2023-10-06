@@ -1,4 +1,5 @@
 #!/bin/bash
+export DEBIAN_FRONTEND=noninteractive
 
 #
 # Remote script to install and configure our HCPP (Hestia Control Panel Plugins).
@@ -132,14 +133,35 @@ echo "alias ll='ls -alF'" >> /home/pws/.bash_aliases
 ./v-change-sys-config-value APP_NAME "CodeGarden PWS"
 ./v-change-sys-config-value FROM_NAME "CodeGarden PWS"
 
-# Add the virtio pws appFolder mount point
+# Add appFolder mount point via davfs2
 mkdir -p /media/appFolder
+apt install -y davfs2
+cat <<EOT >> /etc/davfs2/secrets
+
+# Personal Web Server appFolder
+/media/appFolder        pws     personal-web-server
+
+EOT
+cat <<EOT >> /etc/davfs2/davfs2.conf
+
+use_locks       0
+
+EOT
 cat <<EOT >> /etc/fstab
 
 # Personal Web Server appFolder
-appFolder /media/appFolder 9p _netdev,trans=virtio,version=9p2000.L,msize=104857600 0 0
+http://10.0.2.2:8088/appFolder/ /media/appFolder davfs, user,rw 0 0
 
 EOT
+
+# # Add the virtio pws appFolder mount point
+# mkdir -p /media/appFolder
+# cat <<EOT >> /etc/fstab
+#
+# # Personal Web Server appFolder
+# appFolder /media/appFolder 9p _netdev,trans=virtio,version=9p2000.L,msize=104857600 0 0
+#
+# EOT
 
 # Customize our SSH login message
 cat <<EOT >> /etc/update-motd.d/00-header
