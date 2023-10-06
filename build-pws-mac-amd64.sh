@@ -9,7 +9,7 @@ cpu_arch=$(sysctl -n machdep.cpu.brand_string)
 if [[ $cpu_arch == *"Intel"* ]]; then
     echo "This is an Intel-based Mac."
 else
-    echo "This is not an Intel-based Mac."
+    echo "This script is only compatible with Intel-based Macs. Exiting..."
     exit 1
 fi
 
