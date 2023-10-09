@@ -64,10 +64,10 @@ qemu-system-x86_64 ^
         -m 4G ^
         -bios bios.img ^
         -cdrom %ISO_FILENAME% ^
+        -display default,show-cursor=on ^
         -net nic -net user,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8023-:8023 ^
         -drive if=virtio,format=qcow2,file=pws-amd64.img ^
         -device virtio-balloon-pci
-        REM -display default,show-cursor=on ^
         REM -machine q35 -accel tcg ^
         REM -machine q35,vmport=off -accel whpx,kernel-irqchip=off ^
         REM -vga std ^

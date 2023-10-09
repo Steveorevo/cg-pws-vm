@@ -104,16 +104,17 @@ cd build || exit
 qemu-system-x86_64 \
         -machine q35,vmport=off -accel hvf \
         -cpu qemu64-v1 \
+        -vga virtio \
         -smp cpus=4,sockets=1,cores=4,threads=1 \
         -m 4G \
-        -vga virtio \
         -bios bios.img \
-        -display default,show-cursor=on \
         -cdrom $ISO_FILENAME \
-        -device virtio-net-pci,netdev=net0 \
-        -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
+        -display default,show-cursor=on \
+        -net nic -net user,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
         -drive if=virtio,format=qcow2,file=pws-amd64.img \
         -device virtio-balloon-pci
-        #-drive if=pflash,format=raw,file=efi_amd64.img,readonly=on \
-        #-drive if=pflash,format=raw,file=efi_amd64_vars.img,readonly=on \
+        # -device virtio-net-pci,netdev=net0 \
+        # -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
+        # -drive if=pflash,format=raw,file=efi_amd64.img,readonly=on \
+        # -drive if=pflash,format=raw,file=efi_amd64_vars.img,readonly=on \
 cd ..
