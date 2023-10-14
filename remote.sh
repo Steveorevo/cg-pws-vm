@@ -30,26 +30,6 @@ wget https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-ins
 echo "Installing HestiaCP."
 bash hst-install.sh --apache yes --phpfpm yes --multiphp yes --vsftpd yes --proftpd no --named no --mysql yes --postgresql yes --exim no --dovecot no --sieve no --clamav no --spamassassin no --iptables yes --fail2ban no --quota no --api yes --interactive no --with-debs no  --port '8083' --hostname 'local.dev.cc' --email 'pws@dev.cc' --password 'personal-web-server' --lang 'en' --force
 
-# Adjusting apache2.service file
-echo "Adjusting nginx.service file."
-line_to_add="ExecStartPre=/bin/sleep 3"
-temp_file="/tmp/apache2.service.temp"
-line_number=$(sudo awk '/\[Service\]/ { print NR+1; exit }' /lib/systemd/system/apache2.service)
-cp /lib/systemd/system/apache2.service "$temp_file"
-sed -i "${line_number}i\\${line_to_add}" "$temp_file"
-cp "$temp_file" /lib/systemd/system/apache2.service
-rm "$temp_file"
-
-# Adjusting nginx.service file
-echo "Adjusting nginx.service file."
-line_to_add="ExecStartPre=/bin/sleep 3"
-temp_file="/tmp/nginx.service.temp"
-line_number=$(sudo awk '/\[Service\]/ { print NR+1; exit }' /lib/systemd/system/nginx.service)
-cp /lib/systemd/system/nginx.service "$temp_file"
-sed -i "${line_number}i\\${line_to_add}" "$temp_file"
-cp "$temp_file" /lib/systemd/system/nginx.service
-rm "$temp_file"
-
 # Add ll globally
 cat <<EOT >> /etc/bash.bashrc
 alias ll='ls -alF'
