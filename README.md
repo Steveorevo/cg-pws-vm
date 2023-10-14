@@ -18,23 +18,23 @@ cd cg-pws-vm
 
 * macOS x64
 ```
-source ./build-pws-mac-amd64.sh
+source ./build-vm-mac-amd64.sh
 ```
 * macOS M1
 ```
-source ./build-pws-mac-arm64.sh
+source ./build-vm-mac-arm64.sh
 ```
 * Windows x64
 ```
-./build-pws-win-amd64.bat
+./build-pws-vm-amd64.bat
 ```
 * Linux x64
 ```
-./build-pws-lnx-amd64.sh
+./build-vm-lnx-amd64.sh
 ```
 * Linux aarch64
 ```
-./build-pws-lnx-arm64.sh
+./build-vm-lnx-arm64.sh
 ```
 
 #### 3) Follow the instructions for **[Install Debian Linux](install-debian-linux.md)**
