@@ -30,7 +30,7 @@ touch "/usr/local/hestia/data/hcpp/installed/cg-pws"
 
 # Install HCPP NodeApp
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.14" https://github.com/virtuosoft-dev/hcpp-nodeapp.git nodeapp 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.15" https://github.com/virtuosoft-dev/hcpp-nodeapp.git nodeapp 2>/dev/null
 cd /usr/local/hestia/plugins/nodeapp
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodeapp"
@@ -67,7 +67,7 @@ touch "/usr/local/hestia/data/hcpp/installed/ghost"
 
 # Install HCPP VitePress
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.3" https://github.com/virtuosoft-dev/hcpp-vitepress.git vitepress 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.4" https://github.com/virtuosoft-dev/hcpp-vitepress.git vitepress 2>/dev/null
 cd /usr/local/hestia/plugins/vitepress
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/vitepress"
