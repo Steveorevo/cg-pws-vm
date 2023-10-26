@@ -237,7 +237,7 @@ EOT
 
 # Update nginx.conf to support 250gb downloads
 sed -i "s/client_max_body_size\s\+1024m;/client_max_body_size            250000m;/" /etc/nginx/nginx.conf
-sed -i '/# Proxy settings/a \        proxy_max_temp_file_size 0;' /etc/nginx/nginx.conf
+sed -i '/# Proxy settings/a \        proxy_max_temp_file_size        0;' /etc/nginx/nginx.conf
 
 # Backup hcpp.log for review
 cp /tmp/hcpp.log /home/debian/hcpp.log
