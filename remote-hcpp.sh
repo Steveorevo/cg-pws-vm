@@ -123,6 +123,8 @@ chsh -s /bin/bash pws
 ./v-add-user-composer pws
 ./v-add-user-wp-cli pws
 ./v-change-sys-config-value POLICY_USER_EDIT_WEB_TEMPLATES yes
+./v-change-sys-config-value POLICY_SYSTEM_HIDE_ADMIN yes
+./v-change-user-role pws admin
 
 # Add ll, wp aliases for pws
 echo "alias wp=/home/pws/.wp-cli/wp" >> /home/pws/.bash_aliases
@@ -132,6 +134,7 @@ echo "alias ll='ls -alF'" >> /home/pws/.bash_aliases
 ./v-priv-change-sys-config-value LOGIN_STYLE old
 ./v-change-sys-config-value APP_NAME "CodeGarden PWS"
 ./v-change-sys-config-value FROM_NAME "CodeGarden PWS"
+
 
 # Customize our SSH login message
 cat <<EOT >> /etc/update-motd.d/00-header
