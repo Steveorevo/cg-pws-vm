@@ -93,6 +93,13 @@ cd /usr/local/hestia/plugins/vscode
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/vscode"
 
+# Install HCPP WP Global
+cd /usr/local/hestia/plugins
+git clone --depth 1 --branch "v1.0.0-beta.1" https://github.com/virtuosoft-dev/hcpp-wp-global.git wp-global 2>/dev/null
+cd /usr/local/hestia/plugins/wp-global
+./install
+touch "/usr/local/hestia/data/hcpp/installed/wp-global"
+
 # Create our pws user and package
 cd /usr/local/hestia/bin
 cat <<EOT >> /tmp/pws.txt
@@ -135,6 +142,12 @@ echo "alias ll='ls -alF'" >> /home/pws/.bash_aliases
 ./v-change-sys-config-value APP_NAME "CodeGarden PWS"
 ./v-change-sys-config-value FROM_NAME "CodeGarden PWS"
 
+# Install design-time plugins in /home/pws/web/wp-global
+mkdir -p /home/pws/web/wp-global
+git clone https://github.com/virtuosoft-dev/wp-login-bypass.git /home/pws/web/wp-global/wp-login-bypass
+git clone https://github.com/norcross/airplane-mode.git /home/pws/web/wp-global/airplane-mode.disabled
+git clone https://github.com/ServerPress/admin-color-bar.git /home/pws/web/wp-global/admin-color-bar
+chown -R pws:pws /home/pws/web/wp-global
 
 # Customize our SSH login message
 cat <<EOT >> /etc/update-motd.d/00-header
