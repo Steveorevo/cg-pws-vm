@@ -14,7 +14,7 @@ sleep 1
 
 # Install HestiaCP Pluginable project
 cd /tmp
-git clone --depth 1 --branch "v1.0.0-beta.38" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.39" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
 rm -rf /etc/hestiacp/hooks
 mv hestiacp-pluginable/hooks /etc/hestiacp
 rm -rf hestiacp-pluginable-main
@@ -88,7 +88,7 @@ touch "/usr/local/hestia/data/hcpp/installed/quickstart"
 
 # Install HCPP VSCode
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.11" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.12" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode 2>/dev/null
 cd /usr/local/hestia/plugins/vscode
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/vscode"
