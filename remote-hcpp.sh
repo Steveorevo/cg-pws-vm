@@ -147,7 +147,7 @@ echo "alias ll='ls -alF'" >> /home/pws/.bash_aliases
 mkdir -p /home/pws/tmp/wp-global
 git clone https://github.com/virtuosoft-dev/wp-login-bypass.git /home/pws/tmp/wp-global/wp-login-bypass
 git clone https://github.com/norcross/airplane-mode.git /home/pws/tmp/wp-global/airplane-mode.disabled
-git clone https://github.com/ServerPress/admin-color-bar.git /home/tmp/web/wp-global/admin-color-bar
+git clone https://github.com/ServerPress/admin-color-bar.git /home/pws/tmp/wp-global/admin-color-bar
 chown -R pws:pws /home/pws/tmp/wp-global
 
 # Customize our SSH login message
