@@ -12,8 +12,8 @@ Install Debian Linux with the following options:
 * Confirm by leaving root user password empty
 * Enter 'debian' for the full name of the new user
 * Leave the username value of 'debian'
-* Enter 'personal-web-server' for the password
-* Re-enter 'personal-web-server' to confirm
+* Enter 'preview' for the password
+* Re-enter 'preview' to confirm
 
 The installer will then configure the clock; CodeGarden's corporate office and support is based in California, USA. To maintain compatibility with optional SaaS services, be sure to select 'Pacific' for the timezone by continuing with the following:
 

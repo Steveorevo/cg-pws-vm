@@ -125,18 +125,18 @@ SHELL='bash'
 BACKUPS='365'
 EOT
 ./v-add-user-package /tmp/pws.txt pws
-./v-add-user pws personal-web-server pws@dev.cc pws "Personal Web Server"
-./v-update-user-package pws
-chsh -s /bin/bash pws
-./v-add-user-composer pws
-./v-add-user-wp-cli pws
+./v-add-user devstia preview devstia@dev.pw devstia Devstia Preview
+./v-update-user-package devstia
+chsh -s /bin/bash devstia
+./v-add-user-composer devstia
+./v-add-user-wp-cli devstia
 ./v-change-sys-config-value POLICY_USER_EDIT_WEB_TEMPLATES yes
 ./v-change-sys-config-value POLICY_SYSTEM_HIDE_ADMIN yes
-./v-change-user-role pws admin
+./v-change-user-role devstia admin
 
-# Add ll, wp aliases for pws
-echo "alias wp=/home/pws/.wp-cli/wp" >> /home/pws/.bash_aliases
-echo "alias ll='ls -alF'" >> /home/pws/.bash_aliases
+# Add ll, wp aliases for devstia
+echo "alias wp=/home/devstia/.wp-cli/wp" >> /home/devstia/.bash_aliases
+echo "alias ll='ls -alF'" >> /home/devstia/.bash_aliases
 
 # White label the HestiaCP control panel interface
 ./v-priv-change-sys-config-value LOGIN_STYLE old
@@ -247,7 +247,7 @@ EOT
 ./v-add-sys-pma-sso
 
 # Set the default passwords for Samba, HestiaCP, etc.
-/usr/local/hestia/plugins/cg-pws/update-password.sh "personal-web-server"
+/usr/local/hestia/plugins/cg-pws/update-password.sh "preview"
 
 # Update nginx.conf to support 250gb downloads
 sed -i "s/client_max_body_size\s\+1024m;/client_max_body_size            250000m;/" /etc/nginx/nginx.conf
