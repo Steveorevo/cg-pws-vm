@@ -1,5 +1,5 @@
 ## Install HCPP
-After installing HestiaCP the system will reboot. Once again, the QEMU virtual machine instance should still be running and at the login prompt; leave this running. Now we can install HCPP (Hestia Control Panel Plugins) that furnish us with CodeGarden's (Core Open Developer Elements) support for NodeJS, Open VSCode Server, line-by-line debugging in both PHP and NodeJS, Node-RED, psuedo mail server and with client side preview, etc. Within the terminal you used to install HestiaCP you can type the following to install HCPP:
+After installing HestiaCP the system will reboot. Once again, the QEMU virtual machine instance should still be running and at the login prompt; leave this running. Now we can install HCPP (Hestia Control Panel Plugins) that furnishes us with an extendable plugin API; this API enables plugins for supporting NodeJS, Open VSCode Server, line-by-line debugging in both PHP and NodeJS, Node-RED, psuedo mail server, WordPress global development tools, etc. Within the terminal you used to install HestiaCP you can type the following to install HCPP:
 
 ```
 ./install-hcpp.sh
