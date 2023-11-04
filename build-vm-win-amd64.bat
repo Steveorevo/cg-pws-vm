@@ -1,6 +1,6 @@
 @echo off
 ::
-:: Virtuosoft build script for CodeGarden PWS (Personal Web Server) Edition
+:: Virtuosoft build script for Devstia Preview (a localhost development server)
 :: on Windows x86 64-bit compatible systems.
 ::
 

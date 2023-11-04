@@ -21,12 +21,12 @@ rm -rf hestiacp-pluginable-main
 /etc/hestiacp/hooks/post_install.sh
 service hestia restart
 
-# Install HCPP CG-PWS
+# Install HCPP Devstia Preview
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.38" https://github.com/virtuosoft-dev/hcpp-cg-pws.git cg-pws 2>/dev/null
-cd /usr/local/hestia/plugins/cg-pws
+git clone --depth 1 --branch "v1.0.0-beta.38" https://github.com/virtuosoft-dev/hcpp-dev-pw.git cg-pws 2>/dev/null
+cd /usr/local/hestia/plugins/dev-pw
 ./install
-touch "/usr/local/hestia/data/hcpp/installed/cg-pws"
+touch "/usr/local/hestia/data/hcpp/installed/dev-pw"
 
 # Install HCPP NodeApp
 cd /usr/local/hestia/plugins
@@ -140,8 +140,8 @@ echo "alias ll='ls -alF'" >> /home/devstia/.bash_aliases
 
 # White label the HestiaCP control panel interface
 ./v-priv-change-sys-config-value LOGIN_STYLE old
-./v-change-sys-config-value APP_NAME "CodeGarden PWS"
-./v-change-sys-config-value FROM_NAME "CodeGarden PWS"
+./v-change-sys-config-value APP_NAME "Devstia Preview"
+./v-change-sys-config-value FROM_NAME "Devstia Preview"
 
 # Install design-time plugins in /home/pws/tmp/wp-global
 mkdir -p /home/pws/tmp/wp-global
@@ -182,14 +182,14 @@ chmod +x /etc/update-motd.d/00-header
 
 # Add localhost alias to admin's local.dev.cc domain
 ./v-add-web-domain-alias admin local.dev.cc localhost no
-./v-invoke-plugin cg_pws_regenerate_certificates
-./v-invoke-plugin cg_pws_regenerate_ssh_keys
+./v-invoke-plugin dev_pw_regenerate_certificates
+./v-invoke-plugin dev_pw_regenerate_ssh_keys
 
 # Disable automatic updates for now
 ./v-delete-cron-hestia-autoupdate
 ./v-restart-cron
 
-# Install Samba with PWS share
+# Install Samba with Devstia share
 apt install -y samba
 cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
 cat <<EOT >> /etc/samba/smb.conf
@@ -236,9 +236,9 @@ cat <<EOT >> /etc/samba/smb.conf
    guest ok = no
 
 [PWS]
-   comment = PWS files
+   comment = Devstia files
    read only = no
-   path = /home/pws/web
+   path = /home/devstia/web
    guest ok = no
    directory mask = 0755
    create mask = 0644
@@ -247,7 +247,7 @@ EOT
 ./v-add-sys-pma-sso
 
 # Set the default passwords for Samba, HestiaCP, etc.
-/usr/local/hestia/plugins/cg-pws/update-password.sh "preview"
+/usr/local/hestia/plugins/dev-pw/update-password.sh "preview"
 
 # Update nginx.conf to support 250gb downloads
 sed -i "s/client_max_body_size\s\+1024m;/client_max_body_size            250000m;/" /etc/nginx/nginx.conf
