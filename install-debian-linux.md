@@ -7,7 +7,7 @@ Install Debian Linux with the following options:
 * Select 'American English' for the keyboard.
 
 * Replace the suggested hostname 'debian' with 'local'
-* Enter 'dev.cc' for the domain name
+* Enter 'dev.pw' for the domain name
 * Leave the root user with an empty password
 * Confirm by leaving root user password empty
 * Enter 'debian' for the full name of the new user
@@ -15,11 +15,11 @@ Install Debian Linux with the following options:
 * Enter 'preview' for the password
 * Re-enter 'preview' to confirm
 
-The installer will then configure the clock; CodeGarden's corporate office and support is based in California, USA. To maintain compatibility with optional SaaS services, be sure to select 'Pacific' for the timezone by continuing with the following:
+The installer will then configure the clock; Virtuosoft’s corporate office and support is based in California, USA. To maintain compatibility with optional SaaS services, be sure to select 'Pacific' for the timezone by continuing with the following:
 
 * Press arrow down 3 times to select the 'Pacific' timezone, then enter to continue.
 
-The installer will then continue loading additional components. It will eventually start up the disk partitioner. We've allowed Personal Web Server to handle up to 2 terabyte databases! The initial allocated space will be less than 2 gigabytes and will only grow as needed. Please be sure to answer the following:
+The installer will then continue loading additional components. It will eventually start up the disk partitioner. We've allowed Devstia Preview Web Server to handle up to 2 terabyte databases! The initial allocated space will be less than 2 gigabytes and will only grow as needed. Please be sure to answer the following:
 
 * Select 'Guided - use entire disk'
 * Select 'Virtual disk 1 (vda) - 2.1 TB Virtio Block Device'
