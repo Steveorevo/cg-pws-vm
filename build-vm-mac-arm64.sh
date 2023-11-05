@@ -101,7 +101,7 @@ fi
 #         -drive if=virtio,format=qcow2,file=pws-amd64.img \
 #         -device virtio-blk-pci,drive=driveB07F6855-4243-40E7-A46C-F857444E0A53,bootindex=0 \
 #         -drive if=none,media=disk,id=driveB07F6855-4243-40E7-A46C-F857444E0A53,file=/Users/sjcarnam/Library/Containers/com.utmapp.UTM/Data/Documents/pws-mac-amd64.utm/Data/B07F6855-4243-40E7-A46C-F857444E0A53.qcow2,discard=unmap,detect-zeroes=unmap \
-#         -fsdev "local,id=virtfs0,path=/Users/sjcarnam/Library/Application Support/@virtuosoft/cg-pws-app,security_model=mapped-xattr" \
+#         -fsdev "local,id=virtfs0,path=/Users/sjcarnam/Library/Application Support/@virtuosoft/devstia-app,security_model=mapped-xattr" \
 #         -device virtio-9p-pci,fsdev=virtfs0,mount_tag=appFolder \
 #         -fsdev "local,id=virtfs1,path=/Users/sjcarnam/Sites,security_model=mapped-xattr" \
 #         -device virtio-9p-pci,fsdev=virtfs1,mount_tag=webFolder \

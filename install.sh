@@ -2,7 +2,7 @@
 
 # Remote server details
 remote_user="debian"
-remote_host="local.dev.cc"
+remote_host="local.dev.pw"
 remote_password="preview"
 remote_port="8022"
 

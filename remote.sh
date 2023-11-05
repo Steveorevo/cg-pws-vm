@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Remote script to install and configure our CodeGarden PWS (Personal Web Server) Edition
+# Remote script to install and configure our Devstia Preview virtual machine.
 # This script is run on the remote server with sudo permissions from the /tmp directory; it
 # is invoked by the install.sh script.
 #
@@ -28,7 +28,7 @@ wget https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-ins
 
 # Install HestiaCP
 echo "Installing HestiaCP."
-bash hst-install.sh --apache yes --phpfpm yes --multiphp yes --vsftpd yes --proftpd no --named no --mariadb yes --mysql8 no --postgresql yes --exim no --dovecot no --sieve no --clamav no --spamassassin no --iptables yes --fail2ban no --quota no --api yes --interactive no --with-debs no  --port '8083' --hostname 'local.dev.cc' --email 'pws@dev.cc' --password 'personal-web-server' --lang 'en' --force
+bash hst-install.sh --apache yes --phpfpm yes --multiphp yes --vsftpd yes --proftpd no --named no --mariadb yes --mysql8 no --postgresql yes --exim no --dovecot no --sieve no --clamav no --spamassassin no --iptables yes --fail2ban no --quota no --api yes --interactive no --with-debs no  --port '8083' --hostname 'local.dev.pw' --email 'pws@dev.pw' --password 'personal-web-server' --lang 'en' --force
 
 # Add ll globally
 cat <<EOT >> /etc/bash.bashrc

@@ -1,17 +1,17 @@
-# cg-pws-vm
-Scripts to create platform and architecture specific virtual machines for CodeGarden's Personal Web Server Edition.
+# devstia-vm
+Scripts to create platform and architecture specific virtual machines for the Devstia Preview application.
 
 > :warning: !!! Note: this repo is in progress; when completed, a release will appear in the release tab.
 
 ## Building
 Building a specific virtual machine for a given host requires running under the host operating system for the given script.
 
-> :triangular_flag_on_post: CodeGarden PWS Edition is distributed under GNU **Affero** General Public License v3.0. *Any modified version, including use as a service over a network, requires that the complete source code of the modified version must be made available*.
+> :triangular_flag_on_post: Devstia Preview is distributed under GNU **Affero** General Public License v3.0. *Any modified version, including use as a service over a network, requires that the complete source code of the modified version must be made available*.
 
 #### 1) Start by cloning this repo [via git](https://git-scm.com) to a local folder, followed by changing directories to that folder:
 ```
-git clone https://github.com/virtuosoft-dev/cg-pws-vm cg-pws-vm
-cd cg-pws-vm
+git clone https://github.com/virtuosoft-dev/devstia-vm devstia-vm
+cd devstia-vm
 ```
 
 #### 2) Next, execute the given shell script on your operating system's CLI/terminal:

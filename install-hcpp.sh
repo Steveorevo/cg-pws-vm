@@ -2,7 +2,7 @@
 
 # Remote server details
 remote_user="debian"
-remote_host="local.dev.cc"
+remote_host="local.dev.pw"
 remote_password="preview"
 remote_port="8022"
 
@@ -23,7 +23,7 @@ sshpass -p "$remote_password" scp -o StrictHostKeyChecking=no -P "$remote_port" 
 
 # SSH connection and script execution with sudo
 sshpass -p "$remote_password" ssh -o StrictHostKeyChecking=no -p "$remote_port" $remote_user@$remote_host "echo '$remote_password' | sudo -S bash $remote_script_file"
-echo "Finished installing HCPP components for CodeGarden PWS Edition"
+echo "Finished installing HCPP components for Devstia Preview"
 sleep 3
 echo ""
 echo "Now compressing resulting files for redistribution"

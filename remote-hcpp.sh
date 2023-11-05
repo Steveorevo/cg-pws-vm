@@ -23,7 +23,7 @@ service hestia restart
 
 # Install HCPP Devstia Preview
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.38" https://github.com/virtuosoft-dev/hcpp-dev-pw.git cg-pws 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.38" https://github.com/virtuosoft-dev/hcpp-dev-pw.git dev-pw 2>/dev/null
 cd /usr/local/hestia/plugins/dev-pw
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/dev-pw"
@@ -120,7 +120,7 @@ DATABASES='unlimited'
 CRON_JOBS='unlimited'
 DISK_QUOTA='unlimited'
 BANDWIDTH='unlimited'
-NS='ns1.dev.cc,ns2.dev.cc'
+NS='ns1.dev.pw,ns2.dev.pw'
 SHELL='bash'
 BACKUPS='365'
 EOT
@@ -179,8 +179,8 @@ EOT
 chmod +x /etc/update-motd.d/00-header
 : > /etc/motd
 
-# Add localhost alias to admin's local.dev.cc domain
-./v-add-web-domain-alias admin local.dev.cc localhost no
+# Add localhost alias to admin's local.dev.pw domain
+./v-add-web-domain-alias admin local.dev.pw localhost no
 ./v-invoke-plugin dev_pw_regenerate_certificates
 ./v-invoke-plugin dev_pw_regenerate_ssh_keys
 
