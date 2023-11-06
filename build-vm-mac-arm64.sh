@@ -71,8 +71,8 @@ else
 fi
 
 ## Create the virtual disk images with max ability at 2TB
-if [ ! -f "build/pws-amd64.img" ]; then
-    qemu-img create -f qcow2 build/pws-amd64.img 2000G
+if [ ! -f "build/devstia-amd64.img" ]; then
+    qemu-img create -f qcow2 build/devstia-amd64.img 2000G
     echo "Virtual disk image created!"
 else
     echo "Virtual disk image already exists. May not be clean; exiting."
@@ -98,14 +98,14 @@ fi
 #         -drive if=pflash,format=raw,unit=0,file=efi_amd64.img,readonly=on \
 #         -drive if=pflash,unit=1,file=efi_amd64_vars.img \
 #         -m 4096 \
-#         -drive if=virtio,format=qcow2,file=pws-amd64.img \
+#         -drive if=virtio,format=qcow2,file=devstia-amd64.img \
 #         -device virtio-blk-pci,drive=driveB07F6855-4243-40E7-A46C-F857444E0A53,bootindex=0 \
-#         -drive if=none,media=disk,id=driveB07F6855-4243-40E7-A46C-F857444E0A53,file=/Users/sjcarnam/Library/Containers/com.utmapp.UTM/Data/Documents/pws-mac-amd64.utm/Data/B07F6855-4243-40E7-A46C-F857444E0A53.qcow2,discard=unmap,detect-zeroes=unmap \
+#         -drive if=none,media=disk,id=driveB07F6855-4243-40E7-A46C-F857444E0A53,file=/Users/sjcarnam/Library/Containers/com.utmapp.UTM/Data/Documents/devstia-mac-amd64.utm/Data/B07F6855-4243-40E7-A46C-F857444E0A53.qcow2,discard=unmap,detect-zeroes=unmap \
 #         -fsdev "local,id=virtfs0,path=/Users/sjcarnam/Library/Application Support/@virtuosoft/devstia-app,security_model=mapped-xattr" \
 #         -device virtio-9p-pci,fsdev=virtfs0,mount_tag=appFolder \
 #         -fsdev "local,id=virtfs1,path=/Users/sjcarnam/Sites,security_model=mapped-xattr" \
 #         -device virtio-9p-pci,fsdev=virtfs1,mount_tag=webFolder \
-#         -name pws-mac-amd64 \
+#         -name devstia-mac-amd64 \
 #         -uuid 7C16DB0F-BAB5-456F-87F6-81CD52347B62 \
 #         -rtc base=localtime \
 #         -device virtio-rng-pci \
@@ -122,4 +122,4 @@ fi
 #     -device virtio-net-pci,netdev=net0 \
 #     -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
 #     -cdrom debian-11.7.0-amd64-netinst.iso \
-#     -drive if=virtio,format=qcow2,file=pws-amd64.img
+#     -drive if=virtio,format=qcow2,file=devstia-amd64.img

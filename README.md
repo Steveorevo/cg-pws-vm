@@ -26,7 +26,7 @@ source ./build-vm-mac-arm64.sh
 ```
 * Windows x64
 ```
-./build-pws-vm-amd64.bat
+./build-devstia-vm-amd64.bat
 ```
 * Linux x64
 ```

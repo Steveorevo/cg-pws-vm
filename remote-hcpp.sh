@@ -101,10 +101,10 @@ cd /usr/local/hestia/plugins/wp-global
 touch "/usr/local/hestia/data/hcpp/installed/wp-global"
 mv /usr/local/hestia/plugins/wp-global /usr/local/hestia/plugins/wp-global.disabled
 
-# Create our pws user and package
+# Create our devstia user and package
 cd /usr/local/hestia/bin
-cat <<EOT >> /tmp/pws.txt
-PACKAGE='pws'
+cat <<EOT >> /tmp/devstia.txt
+PACKAGE='devstia'
 WEB_TEMPLATE='default'
 BACKEND_TEMPLATE='default'
 PROXY_TEMPLATE='default'
@@ -124,7 +124,7 @@ NS='ns1.dev.pw,ns2.dev.pw'
 SHELL='bash'
 BACKUPS='365'
 EOT
-./v-add-user-package /tmp/pws.txt pws
+./v-add-user-package /tmp/devstia.txt devstia
 ./v-add-user devstia preview devstia@dev.pw devstia Devstia Preview
 ./v-update-user-package devstia
 chsh -s /bin/bash devstia
@@ -143,12 +143,12 @@ echo "alias ll='ls -alF'" >> /home/devstia/.bash_aliases
 ./v-change-sys-config-value APP_NAME "Devstia Preview"
 ./v-change-sys-config-value FROM_NAME "Devstia Preview"
 
-# Install design-time plugins in /home/pws/tmp/wp-global
-mkdir -p /home/pws/tmp/wp-global
-git clone https://github.com/virtuosoft-dev/wp-login-bypass.git /home/pws/tmp/wp-global/wp-login-bypass
-git clone https://github.com/norcross/airplane-mode.git /home/pws/tmp/wp-global/airplane-mode.disabled
-git clone https://github.com/ServerPress/admin-color-bar.git /home/pws/tmp/wp-global/admin-color-bar
-chown -R pws:pws /home/pws/tmp/wp-global
+# Install design-time plugins in /home/devstia/tmp/wp-global
+mkdir -p /home/devstia/tmp/wp-global
+git clone https://github.com/virtuosoft-dev/wp-login-bypass.git /home/devstia/tmp/wp-global/wp-login-bypass
+git clone https://github.com/norcross/airplane-mode.git /home/devstia/tmp/wp-global/airplane-mode.disabled
+git clone https://github.com/ServerPress/admin-color-bar.git /home/devstia/tmp/wp-global/admin-color-bar
+chown -R devstia:devstia /home/devstia/tmp/wp-global
 
 # Customize our SSH login message
 cat <<EOT >> /etc/update-motd.d/00-header
@@ -234,7 +234,7 @@ cat <<EOT >> /etc/samba/smb.conf
    read only = yes
    guest ok = no
 
-[PWS]
+[Devstia]
    comment = Devstia files
    read only = no
    path = /home/devstia/web

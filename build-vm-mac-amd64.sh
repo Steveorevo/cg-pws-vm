@@ -85,8 +85,8 @@ else
 fi
 
 ## Create the virtual disk images with the max abilitiy of 2TB
-if [ ! -f "build/pws-amd64.img" ]; then
-    qemu-img create -f qcow2 build/pws-amd64.img 2000G
+if [ ! -f "build/devstia-amd64.img" ]; then
+    qemu-img create -f qcow2 build/devstia-amd64.img 2000G
     echo "Virtual disk image created!"
 else
     echo "Virtual disk image already exists. May not be clean; exiting."
@@ -111,7 +111,7 @@ qemu-system-x86_64 \
         -cdrom $ISO_FILENAME \
         -display default,show-cursor=on \
         -net nic -net user,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
-        -drive if=virtio,format=qcow2,file=pws-amd64.img \
+        -drive if=virtio,format=qcow2,file=devstia-amd64.img \
         -device virtio-balloon-pci
         # -device virtio-net-pci,netdev=net0 \
         # -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
