@@ -23,7 +23,7 @@ service hestia restart
 
 # Install HCPP Devstia Preview
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.39" https://github.com/virtuosoft-dev/hcpp-dev-pw.git dev-pw 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.40" https://github.com/virtuosoft-dev/hcpp-dev-pw.git dev-pw 2>/dev/null
 cd /usr/local/hestia/plugins/dev-pw
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/dev-pw"
@@ -81,7 +81,7 @@ touch "/usr/local/hestia/data/hcpp/installed/webdav"
 
 # Install HCPP Quickstart
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.7" https://github.com/virtuosoft-dev/hcpp-quickstart.git quickstart 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.8" https://github.com/virtuosoft-dev/hcpp-quickstart.git quickstart 2>/dev/null
 cd /usr/local/hestia/plugins/quickstart
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/quickstart"
@@ -95,7 +95,7 @@ touch "/usr/local/hestia/data/hcpp/installed/vscode"
 
 # Install HCPP WP Global, then DISABLE it
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.5" https://github.com/virtuosoft-dev/hcpp-wp-global.git wp-global 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.6" https://github.com/virtuosoft-dev/hcpp-wp-global.git wp-global 2>/dev/null
 cd /usr/local/hestia/plugins/wp-global
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/wp-global"
