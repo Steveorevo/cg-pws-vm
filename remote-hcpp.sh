@@ -14,7 +14,7 @@ sleep 1
 
 # Install HestiaCP Pluginable project
 cd /tmp
-git clone --depth 1 --branch "v1.0.0-beta.40" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
+git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
 rm -rf /etc/hestiacp/hooks
 mv hestiacp-pluginable/hooks /etc/hestiacp
 rm -rf hestiacp-pluginable-main
@@ -23,14 +23,14 @@ service hestia restart
 
 # Install HCPP Devstia Preview
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.38" https://github.com/virtuosoft-dev/hcpp-dev-pw.git dev-pw 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.39" https://github.com/virtuosoft-dev/hcpp-dev-pw.git dev-pw 2>/dev/null
 cd /usr/local/hestia/plugins/dev-pw
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/dev-pw"
 
 # Install HCPP NodeApp
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.16" https://github.com/virtuosoft-dev/hcpp-nodeapp.git nodeapp 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.17" https://github.com/virtuosoft-dev/hcpp-nodeapp.git nodeapp 2>/dev/null
 cd /usr/local/hestia/plugins/nodeapp
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodeapp"
@@ -53,7 +53,7 @@ touch "/usr/local/hestia/data/hcpp/installed/mailcatcher"
 
 # Install HCPP NodeBB
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.13" https://github.com/virtuosoft-dev/hcpp-nodebb.git nodebb 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.14" https://github.com/virtuosoft-dev/hcpp-nodebb.git nodebb 2>/dev/null
 cd /usr/local/hestia/plugins/nodebb
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodebb"
@@ -67,35 +67,35 @@ touch "/usr/local/hestia/data/hcpp/installed/ghost"
 
 # Install HCPP VitePress
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.4" https://github.com/virtuosoft-dev/hcpp-vitepress.git vitepress 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.5" https://github.com/virtuosoft-dev/hcpp-vitepress.git vitepress 2>/dev/null
 cd /usr/local/hestia/plugins/vitepress
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/vitepress"
 
 # Install HCPP WebDAV
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.5" https://github.com/virtuosoft-dev/hcpp-webdav.git webdav 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.6" https://github.com/virtuosoft-dev/hcpp-webdav.git webdav 2>/dev/null
 cd /usr/local/hestia/plugins/webdav
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/webdav"
 
 # Install HCPP Quickstart
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.6" https://github.com/virtuosoft-dev/hcpp-quickstart.git quickstart 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.7" https://github.com/virtuosoft-dev/hcpp-quickstart.git quickstart 2>/dev/null
 cd /usr/local/hestia/plugins/quickstart
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/quickstart"
 
 # Install HCPP VSCode
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.12" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.13" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode 2>/dev/null
 cd /usr/local/hestia/plugins/vscode
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/vscode"
 
 # Install HCPP WP Global, then DISABLE it
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.4" https://github.com/virtuosoft-dev/hcpp-wp-global.git wp-global 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.5" https://github.com/virtuosoft-dev/hcpp-wp-global.git wp-global 2>/dev/null
 cd /usr/local/hestia/plugins/wp-global
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/wp-global"
