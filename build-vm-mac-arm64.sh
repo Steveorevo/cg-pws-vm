@@ -6,10 +6,10 @@
 
 # Check if the CPU architecture indicates an ARM-based Mac
 cpu_arch=$(sysctl -n machdep.cpu.brand_string)
-if [[ $cpu_arch == *"ARM"* ]]; then
-    echo "This is an RISC-based Mac."
+if [[ $cpu_arch == *"Apple M"* ]]; then
+    echo "This is an Apple M-processor based Mac."
 else
-    echo "This script is only compatible with RISC-based Macs. Exiting..."
+    echo "This script is only compatible with Apple M-processor based Macs. Exiting..."
     exit 1
 fi
 
