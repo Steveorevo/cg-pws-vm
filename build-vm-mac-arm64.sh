@@ -94,9 +94,9 @@ fi
 # Run QEMU with the following options to start the debian installation process
 echo "Booting Debian Linux installer..."
 cd build || exit
-qemu-system-x86_64 \
+qemu-system-aarch64 \
         -machine q35,vmport=off -accel hvf \
-        -cpu qemu64-v1 \
+        -cpu cortex-a72 \
         -vga virtio \
         -smp cpus=4,sockets=1,cores=4,threads=1 \
         -m 4G \
