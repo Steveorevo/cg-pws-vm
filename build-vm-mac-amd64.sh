@@ -57,14 +57,6 @@ else
     echo "Build folder already exists."
 fi
 
-## Copy EFI over to build folder
-#if [ ! -f "build/efi_amd64.img" ]; then
-#    cp /usr/local/share/qemu/edk2-x86_64-code.fd build/efi_amd64.img
-#    cat /usr/local/share/qemu/edk2-i386-vars.fd /usr/local/share/qemu/edk2-x86_64-code.fd > build/efi_amd64_vars.img
-#else
-#    echo "BIOS file already extracted."
-#fi
-
 # Check if BIOS file already exists
 if [ ! -f "build/bios.img" ]; then
     echo "Copying BIOS file..."
