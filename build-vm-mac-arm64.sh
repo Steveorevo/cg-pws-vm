@@ -32,6 +32,14 @@ else
     echo "Homebrew is already installed."
 fi
 
+# Check if sshpass is installed
+if ! brew list --formula | grep -q '^sshpass$'; then
+    echo "sshpass is not installed. Installing..."
+    brew install --force hudochenkov/sshpass/sshpass
+else
+    echo "sshpass is already installed."
+fi
+
 # Check if QEMU is installed
 if ! brew list --formula | grep -q '^qemu$'; then
     echo "QEMU is not installed. Installing..."
@@ -49,19 +57,17 @@ else
     echo "Build folder already exists."
 fi
 
-# Untar the EFI file
-if [ ! -f "build/efi_arm.img" ]; then
-    echo "Extracting EFI file..."
-    tar -xf ./boot/efi_arm.tar.xz -C ./build
-    cp build/efi_arm.img build/efi_arm2.img
-    echo "Extraction complete."
+# Check if BIOS file already exists
+if [ ! -f "build/bios.img" ]; then
+    echo "Copying BIOS file..."
+    cp /usr/local/share/qemu/bios.bin build/bios.img
 else
-    echo "BIOS file already extracted."
+    echo "BIOS file already copied."
 fi
 
 # Check if ISO file already exists
-ISO_URL="https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.7.0-amd64-netinst.iso"
-ISO_FILENAME="debian-11.7.0-amd64-netinst.iso"
+ISO_FILENAME="debian-12.0.0-arm64-netinst.iso"
+ISO_URL="https://cdimage.debian.org/cdimage/archive/12.0.0/arm64/iso-cd/$ISO_FILENAME"
 if [ ! -f "build/$ISO_FILENAME" ]; then
     echo "Downloading Debian ISO..."
     curl -L -o "build/$ISO_FILENAME" "$ISO_URL"
@@ -71,8 +77,8 @@ else
 fi
 
 ## Create the virtual disk images with max ability at 2TB
-if [ ! -f "build/devstia-amd64.img" ]; then
-    qemu-img create -f qcow2 build/devstia-amd64.img 2000G
+if [ ! -f "build/devstia-arm64.img" ]; then
+    qemu-img create -f qcow2 build/devstia-arm64.img 2000G
     echo "Virtual disk image created!"
 else
     echo "Virtual disk image already exists. May not be clean; exiting."
@@ -85,41 +91,23 @@ else
 fi
 
 
-# qemu-system-x86_64 \
-#         -vga virtio \
-#         -device e1000,mac=0A:ED:23:58:71:EA,netdev=net0 \
-#         -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
-#         -cpu Haswell \
-#         -smp cpus=3,sockets=1,cores=3,threads=1 \
-#         -machine q35,vmport=off \
-#         -accel hvf \
-#         -global PIIX4_PM.disable_s3=1 \
-#         -global ICH9-LPC.disable_s3=1 \
-#         -drive if=pflash,format=raw,unit=0,file=efi_amd64.img,readonly=on \
-#         -drive if=pflash,unit=1,file=efi_amd64_vars.img \
-#         -m 4096 \
-#         -drive if=virtio,format=qcow2,file=devstia-amd64.img \
-#         -device virtio-blk-pci,drive=driveB07F6855-4243-40E7-A46C-F857444E0A53,bootindex=0 \
-#         -drive if=none,media=disk,id=driveB07F6855-4243-40E7-A46C-F857444E0A53,file=/Users/sjcarnam/Library/Containers/com.utmapp.UTM/Data/Documents/devstia-mac-amd64.utm/Data/B07F6855-4243-40E7-A46C-F857444E0A53.qcow2,discard=unmap,detect-zeroes=unmap \
-#         -fsdev "local,id=virtfs0,path=/Users/sjcarnam/Library/Application Support/@virtuosoft/devstia-app,security_model=mapped-xattr" \
-#         -device virtio-9p-pci,fsdev=virtfs0,mount_tag=appFolder \
-#         -fsdev "local,id=virtfs1,path=/Users/sjcarnam/Sites,security_model=mapped-xattr" \
-#         -device virtio-9p-pci,fsdev=virtfs1,mount_tag=webFolder \
-#         -name devstia-mac-amd64 \
-#         -uuid 7C16DB0F-BAB5-456F-87F6-81CD52347B62 \
-#         -rtc base=localtime \
-#         -device virtio-rng-pci \
-#         -device virtio-balloon-pci
-
-
-# sudo qemu-system-x86_64 \
-#     -accel hvf \
-#     -cpu Haswell-v1 \
-#     -smp 3 \
-#     -m 4G \
-#     -vga virtio \
-#     -display default,show-cursor=on \
-#     -device virtio-net-pci,netdev=net0 \
-#     -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
-#     -cdrom debian-11.7.0-amd64-netinst.iso \
-#     -drive if=virtio,format=qcow2,file=devstia-amd64.img
+# Run QEMU with the following options to start the debian installation process
+echo "Booting Debian Linux installer..."
+cd build || exit
+qemu-system-x86_64 \
+        -machine q35,vmport=off -accel hvf \
+        -cpu qemu64-v1 \
+        -vga virtio \
+        -smp cpus=4,sockets=1,cores=4,threads=1 \
+        -m 4G \
+        -bios bios.img \
+        -cdrom $ISO_FILENAME \
+        -display default,show-cursor=on \
+        -net nic -net user,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
+        -drive if=virtio,format=qcow2,file=devstia-arm64.img \
+        -device virtio-balloon-pci
+        # -device virtio-net-pci,netdev=net0 \
+        # -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
+        # -drive if=pflash,format=raw,file=efi_arm64.img,readonly=on \
+        # -drive if=pflash,format=raw,file=efi_arm64_vars.img,readonly=on \
+cd ..
