@@ -62,7 +62,7 @@ fi
 # Check if BIOS file already exists
 if [ ! -f "build/bios.img" ]; then
     echo "Copying BIOS file..."
-    cp /usr/local/share/qemu/bios.bin build/bios.img
+    cp /opt/homebrew/share/qemu/bios.bin build/bios.img
 else
     echo "BIOS file already copied."
 fi
@@ -97,7 +97,7 @@ fi
 echo "Booting Debian Linux installer..."
 cd build || exit
 qemu-system-aarch64 \
-        -machine q35,vmport=off -accel hvf \
+        -machine virt,vmport=off -accel hvf \
         -cpu cortex-a72 \
         -vga virtio \
         -smp cpus=4,sockets=1,cores=4,threads=1 \
