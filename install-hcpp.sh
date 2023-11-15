@@ -34,9 +34,8 @@ if [ -f "build/devstia-amd64.img" ]; then
     # tar -cJf devstia-amd64.tar.xz devstia-amd64.img efi_amd64.img efi_amd64_vars.img
 fi
 if [ -f "build/devstia-arm64.img" ]; then
-    echo "Found devstia-arm64.img, compressing with BIOS"
+    echo "Found devstia-arm64.img, compressing with EFI"
     cd ./build
-    tar -cJf devstia-arm64.tar.xz devstia-arm64.img bios.img
-    # tar -cJf devstia-arm64.tar.xz devstia-arm64.img efi_arm64.img efi_arm64_vars.img
+    tar -cJf devstia-arm64.tar.xz devstia-arm64.img efi_arm64.img efi_arm64_vars.img
 fi
 echo "Done! Finished compression, exiting"
