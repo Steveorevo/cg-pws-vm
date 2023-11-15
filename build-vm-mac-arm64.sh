@@ -59,12 +59,13 @@ else
     echo "Build folder already exists."
 fi
 
-# Check if BIOS file already exists
-if [ ! -f "build/bios.img" ]; then
-    echo "Copying BIOS file..."
-    cp /opt/homebrew/share/qemu/bios.bin build/bios.img
+# Check if EFI file already exists
+if [ ! -f "build/efi_arm.img" ]; then
+    echo "Copying EFI files..."
+    cp /opt/homebrew/share/qemu/edk2-aarch64-code.fd build/efi_arm64.img
+    dd if=/dev/zero of=build/efi_arm64_vars.img bs=1M count=64
 else
-    echo "BIOS file already copied."
+    echo "EFI files already copied."
 fi
 
 # Check if ISO file already exists
@@ -97,19 +98,18 @@ fi
 echo "Booting Debian Linux installer..."
 cd build || exit
 qemu-system-aarch64 \
-        -machine virt,vmport=off -accel hvf \
-        -cpu cortex-a72 \
-        -vga virtio \
+        -machine virt -accel hvf \
+        -cpu host \
+        -vga none \
         -smp cpus=4,sockets=1,cores=4,threads=1 \
         -m 4G \
-        -bios bios.img \
-        -cdrom $ISO_FILENAME \
-        -display default,show-cursor=on \
+        -drive if=pflash,format=raw,file=efi_arm64.img,file.locking=off,readonly=on \
+        -drive if=pflash,format=raw,file=efi_arm64_vars.img \
+        -device nec-usb-xhci,id=usb-bus \
+        -device usb-storage,drive=cdrom01,removable=true,bootindex=1,bus=usb-bus.0 -drive if=none,media=cdrom,id=cdrom01,file=$ISO_FILENAME,readonly=on \
+        -device virtio-blk-pci,drive=drivedevstia-arm64,bootindex=0 \
+        -drive if=none,media=disk,id=drivedevstia-arm64,file=devstia-arm64.img,discard=unmap,detect-zeroes=unmap \
+        -device virtio-balloon-pci \
         -net nic -net user,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
-        -drive if=virtio,format=qcow2,file=devstia-arm64.img \
-        -device virtio-balloon-pci
-        # -device virtio-net-pci,netdev=net0 \
-        # -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
-        # -drive if=pflash,format=raw,file=efi_arm64.img,readonly=on \
-        # -drive if=pflash,format=raw,file=efi_arm64_vars.img,readonly=on \
+        -nographic
 cd ..
