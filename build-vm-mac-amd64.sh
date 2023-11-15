@@ -107,8 +107,4 @@ qemu-system-x86_64 \
         -net nic -net user,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
         -drive if=virtio,format=qcow2,file=devstia-amd64.img \
         -device virtio-balloon-pci
-        # -device virtio-net-pci,netdev=net0 \
-        # -netdev user,id=net0,hostfwd=tcp::8022-:22,hostfwd=tcp::80-:80,hostfwd=tcp::443-:443,hostfwd=tcp::8083-:8083 \
-        # -drive if=pflash,format=raw,file=efi_amd64.img,readonly=on \
-        # -drive if=pflash,format=raw,file=efi_amd64_vars.img,readonly=on \
 cd ..
