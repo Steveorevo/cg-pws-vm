@@ -12,6 +12,11 @@ echo "Starting automated HCPP installation"
 echo "This will take a long while, please be patient..."
 sleep 1
 
+# Install build essentials for aarch64/arm64/Apple Silicon (needed to build NodeJS dependencies)
+if [ "$(uname -m)" = "aarch64" ]; then
+  apt-get install -y build-essential
+fi
+
 # Install HestiaCP Pluginable project
 cd /tmp
 git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
