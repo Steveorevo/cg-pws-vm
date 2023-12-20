@@ -91,7 +91,7 @@ touch "/usr/local/hestia/data/hcpp/installed/quickstart"
 
 # Install HCPP VSCode
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0-beta.15" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode 2>/dev/null
+git clone --depth 1 --branch "v1.0.0-beta.16" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode 2>/dev/null
 cd /usr/local/hestia/plugins/vscode
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/vscode"
