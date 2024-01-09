@@ -125,7 +125,7 @@ DISK_QUOTA='unlimited'
 BANDWIDTH='unlimited'
 NS='ns1.dev.pw,ns2.dev.pw'
 SHELL='bash'
-BACKUPS='365'
+BACKUPS='3'
 EOT
 ./v-add-user-package /tmp/devstia.txt devstia
 ./v-add-user devstia preview devstia@dev.pw devstia Devstia Preview
