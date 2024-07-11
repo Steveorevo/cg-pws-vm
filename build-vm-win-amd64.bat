@@ -34,8 +34,9 @@ if not exist "build\bios.img" (
 )
 
 :: Check if ISO file already exists
-set ISO_FILENAME="debian-12.0.0-amd64-netinst.iso"
-set ISO_URL="https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/%ISO_FILENAME%"
+set DEBIAN_VERSION="12.2.0"
+set ISO_FILENAME="debian-%DEBIAN_VERSION%-amd64-netinst.iso"
+set ISO_URL="https://cdimage.debian.org/cdimage/archive/%DEBIAN_VERSION%/amd64/iso-cd/%ISO_FILENAME%"
 if not exist "build\%ISO_FILENAME%" (
     echo Downloading Debian ISO...
     curl -L -o "build\%ISO_FILENAME%" "%ISO_URL%"
