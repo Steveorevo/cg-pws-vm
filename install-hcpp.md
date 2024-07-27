@@ -13,7 +13,6 @@ The HCPP installation process will automatically install each of the repos liste
 * [HCPP-VSCode](https://github.com/virtuosoft-dev/hcpp-vscode)
 * [HCPP-NodeRED](https://github.com/virtuosoft-dev/hcpp-nodered)
 * [HCPP-NodeBB](https://github.com/virtuosoft-dev/hcpp-nodebb)
-* [HCPP-Ghost](https://github.com/virtuosoft-dev/hcpp-ghost)
 * [HCPP-WebDAV](https://github.com/virtuosoft-dev/hcpp-webdav)
 * [HCPP-Quickstart](https://github.com/virtuosoft-dev/hcpp-quickstart)
 
