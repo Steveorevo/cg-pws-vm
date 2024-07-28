@@ -17,7 +17,7 @@ apt-get install -y build-essential
 
 # Install HestiaCP Pluginable project
 cd /tmp
-git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hestiacp-pluginable.git 2>/dev/null
+git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hestiacp-pluginable.git
 rm -rf /etc/hestiacp/hooks
 mv hestiacp-pluginable/hooks /etc/hestiacp
 rm -rf hestiacp-pluginable-main
@@ -26,14 +26,14 @@ service hestia restart
 
 # Install HCPP Devstia Preview
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-dev-pw.git dev-pw 2>/dev/null
+git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-dev-pw.git dev-pw
 cd /usr/local/hestia/plugins/dev-pw
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/dev-pw"
 
 # Install HCPP NodeApp
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-nodeapp.git nodeapp 2>/dev/null
+git clone --depth 1 --branch "v1.0.1" https://github.com/virtuosoft-dev/hcpp-nodeapp.git nodeapp
 cd /usr/local/hestia/plugins/nodeapp
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodeapp"
@@ -41,14 +41,14 @@ export NVM_DIR=/opt/nvm && source /opt/nvm/nvm.sh
 
 # Install HCPP NodeRED
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v2.0.0" https://github.com/virtuosoft-dev/hcpp-nodered.git nodered 2>/dev/null
+git clone --depth 1 --branch "v2.0.0" https://github.com/virtuosoft-dev/hcpp-nodered.git nodered
 cd /usr/local/hestia/plugins/nodered
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodered"
 
 # Install HCPP MailCatcher
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-mailcatcher.git mailcatcher 2>/dev/null
+git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-mailcatcher.git mailcatcher
 cd /usr/local/hestia/plugins/mailcatcher
 ./install
 php -r 'require_once("/usr/local/hestia/web/pluginable.php");global $hcpp;$hcpp->do_action("hcpp_plugin_installed", "mailcatcher");'
@@ -56,42 +56,42 @@ touch "/usr/local/hestia/data/hcpp/installed/mailcatcher"
 
 # Install HCPP NodeBB
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-nodebb.git nodebb 2>/dev/null
+git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-nodebb.git nodebb
 cd /usr/local/hestia/plugins/nodebb
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodebb"
 
 # Install HCPP VitePress
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-vitepress.git vitepress 2>/dev/null
+git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-vitepress.git vitepress
 cd /usr/local/hestia/plugins/vitepress
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/vitepress"
 
 # Install HCPP WebDAV
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-webdav.git webdav 2>/dev/null
+git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-webdav.git webdav
 cd /usr/local/hestia/plugins/webdav
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/webdav"
 
 # Install HCPP Quickstart
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.2" https://github.com/virtuosoft-dev/hcpp-quickstart.git quickstart 2>/dev/null
+git clone --depth 1 --branch "v1.0.2" https://github.com/virtuosoft-dev/hcpp-quickstart.git quickstart
 cd /usr/local/hestia/plugins/quickstart
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/quickstart"
 
 # Install HCPP VSCode
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode 2>/dev/null
+git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode
 cd /usr/local/hestia/plugins/vscode
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/vscode"
 
 # Install HCPP WP Global, then DISABLE it
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-wp-global.git wp-global 2>/dev/null
+git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-wp-global.git wp-global
 cd /usr/local/hestia/plugins/wp-global
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/wp-global"
