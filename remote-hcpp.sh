@@ -56,7 +56,7 @@ touch "/usr/local/hestia/data/hcpp/installed/mailcatcher"
 
 # Install HCPP NodeBB
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.1" https://github.com/virtuosoft-dev/hcpp-nodebb.git nodebb
+git clone --depth 1 --branch "v1.0.2" https://github.com/virtuosoft-dev/hcpp-nodebb.git nodebb
 cd /usr/local/hestia/plugins/nodebb
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodebb"
