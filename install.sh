@@ -3,7 +3,7 @@
 # Remote server details
 remote_user="debian"
 remote_host="local.dev.pw"
-remote_password="preview"
+remote_password="personalweb"
 remote_port="8022"
 
 # Local script file to transfer

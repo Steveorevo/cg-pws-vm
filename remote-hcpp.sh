@@ -24,7 +24,7 @@ rm -rf hestiacp-pluginable-main
 /etc/hestiacp/hooks/post_install.sh
 service hestia restart
 
-# Install HCPP Devstia Preview
+# Install HCPP Devstia Personal Web
 cd /usr/local/hestia/plugins
 git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-dev-pw.git dev-pw
 cd /usr/local/hestia/plugins/dev-pw
@@ -121,7 +121,7 @@ SHELL='bash'
 BACKUPS='0'
 EOT
 ./v-add-user-package /tmp/devstia.txt devstia
-./v-add-user devstia preview devstia@dev.pw devstia Devstia Preview
+./v-add-user devstia personalweb devstia@dev.pw devstia Devstia PersonalWeb
 ./v-update-user-package devstia
 chsh -s /bin/bash devstia
 ./v-add-user-composer devstia
@@ -136,8 +136,8 @@ echo "alias ll='ls -alF'" >> /home/devstia/.bash_aliases
 
 # White label the HestiaCP control panel interface
 ./v-priv-change-sys-config-value LOGIN_STYLE old
-./v-change-sys-config-value APP_NAME "Devstia Preview"
-./v-change-sys-config-value FROM_NAME "Devstia Preview"
+./v-change-sys-config-value APP_NAME "Devstia PW"
+./v-change-sys-config-value FROM_NAME "Devstia PW"
 
 # Install design-time plugins in /home/devstia/tmp/wp-global
 mkdir -p /home/devstia/tmp/wp-global
@@ -155,7 +155,7 @@ asciiart="\e[38;5;244m 
 \e[38;5;244m                     \e[38;5;60m▒\e[38;5;130m▓\e[38;5;166m▄\e[38;5;167m▄
 \e[38;5;244m   Welcome to        \e[38;5;67m▐\e[38;5;32m▒\e[38;5;94m▒\e[38;5;208m▒\e[38;5;208m▒\e[38;5;208m▌
 \e[38;5;244m                     \e[38;5;66m▐\e[38;5;26m▒\e[38;5;32m▒\e[38;5;172m▒\e[38;5;214m▒\e[38;5;214m▒\e[38;5;214m▒
-\e[38;5;244m   Devstia\xe2\x84\xa2 Preview  \e[38;5;60m▐\e[38;5;25m▓\e[38;5;25m▒\e[38;5;239m▒\e[38;5;214m▒\e[38;5;214m▒▒
+\e[38;5;244m   Devstia\xe2\x84\xa2 PW       \e[38;5;60m▐\e[38;5;25m▓\e[38;5;25m▒\e[38;5;239m▒\e[38;5;214m▒\e[38;5;214m▒▒
 \e[38;5;244m                     \e[38;5;60m▐\e[38;5;25m▓\e[38;5;25m▓\e[38;5;24m▓\e[38;5;202m▒\e[38;5;202m▒▒
 \e[38;5;244m                     \e[38;5;60m▐\e[38;5;24m▓\e[38;5;24m▓\e[38;5;17m▓\e[38;5;202m▒\e[38;5;202m▒▒
 \e[38;5;244m                     \e[38;5;60m▐\e[38;5;24m▓\e[38;5;24m▓\e[38;5;53m▓\e[38;5;196m▒\e[38;5;196m▒\e[38;5;160m▌
@@ -166,7 +166,7 @@ asciiart="\e[38;5;244m 
 \e[38;5;244m      \e[38;5;32m▒\e[38;5;68m░░\e[38;5;32m░\e[38;5;32m▒\e[38;5;32m▒▒▒      \e[38;5;25m▓\e[38;5;25m▓\e[38;5;25m▓\e[38;5;1m▓\e[38;5;124m▓\e[38;5;124m▓
 \e[38;5;244m      \e[38;5;32m▒\e[38;5;32m▒▒\e[38;5;33m▒\e[38;5;33m▒▒▒\e[38;5;32m▌      \e[38;5;25m▓\e[38;5;25m▓\e[38;5;24m▓\e[38;5;88m▓\e[38;5;88m▓\e[38;5;88m▓
 \e[38;5;244m     \e[38;5;67m▐\e[38;5;33m▒\e[38;5;33m▒▒\e[38;5;33m▒\e[38;5;32m▒\e[38;5;32m▒\e[38;5;32m▒      \e[38;5;25m▓\e[38;5;25m▓\e[38;5;24m▓\e[38;5;53m▓\e[38;5;88m▓\e[38;5;88m▓\e[38;5;88m▌
-\e[38;5;244m      \e[38;5;26m▒\e[38;5;26m▒▒\e[38;5;32m░\e[38;5;68m░\e[38;5;67m░\e[38;5;67m░\e[38;5;67m░    \e[38;5;32m▐\e[38;5;24m▓\e[38;5;24m▓\e[38;5;24m▓\e[38;5;53m▓\e[38;5;124m▓\e[38;5;124m▓\e[38;5;124m▌   \e[38;5;244m \xc2\xa92023 Virtuosoft
+\e[38;5;244m      \e[38;5;26m▒\e[38;5;26m▒▒\e[38;5;32m░\e[38;5;68m░\e[38;5;67m░\e[38;5;67m░\e[38;5;67m░    \e[38;5;32m▐\e[38;5;24m▓\e[38;5;24m▓\e[38;5;24m▓\e[38;5;53m▓\e[38;5;124m▓\e[38;5;124m▓\e[38;5;124m▌   \e[38;5;244m \xc2\xa92024 Virtuosoft
 \e[38;5;244m      \e[38;5;60m▀\e[38;5;25m▓\e[38;5;25m▓\e[38;5;25m▓\e[38;5;67m░\e[38;5;67m░\e[38;5;31m█\e[38;5;67m░░ \e[38;5;67m▄\e[38;5;25m▓\e[38;5;60m▀ \e[38;5;24m▓\e[38;5;24m▓\e[38;5;25m▓\e[38;5;53m▓\e[38;5;124m▓\e[38;5;124m▓
 \e[38;5;244m        \e[38;5;60m▀\e[38;5;24m▓\e[38;5;24m▓\e[38;5;24m▓\e[38;5;25m▓\e[38;5;25m▓\e[38;5;25m▓\e[38;5;60m▀     \e[38;5;60m▀\e[38;5;25m▓\e[38;5;25m▒▒\e[38;5;238m▒\e[38;5;89m▓\e[38;5;95m▄\e[38;5;95m▄
 \e[38;5;244m "
@@ -242,7 +242,7 @@ EOT
 ./v-add-sys-pma-sso
 
 # Set the default passwords for Samba, HestiaCP, etc.
-/usr/local/hestia/plugins/dev-pw/update-password.sh "preview"
+/usr/local/hestia/plugins/dev-pw/update-password.sh "personalweb"
 
 # Update nginx.conf to support 250gb downloads
 sed -i "s/client_max_body_size\s\+1024m;/client_max_body_size            250000m;/" /etc/nginx/nginx.conf
