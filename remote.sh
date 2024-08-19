@@ -35,6 +35,10 @@ cat <<EOT >> /etc/bash.bashrc
 alias ll='ls -alF'
 EOT
 
+# Fix phpmyadmin permissions
+echo "Fixing phpMyAdmin permissions."
+chown root:www-data /etc/phpmyadmin/config.inc.php
+
 # Reboot the server
 echo "Rebooting the server."
 shutdown -r now
