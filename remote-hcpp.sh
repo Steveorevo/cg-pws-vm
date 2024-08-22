@@ -26,7 +26,7 @@ service hestia restart
 
 # Install HCPP Devstia Personal Web
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.0" https://github.com/virtuosoft-dev/hcpp-dev-pw.git dev-pw
+git clone --depth 1 --branch "v1.0.0" https://github.com/devstia/hcpp-dev-pw.git dev-pw
 cd /usr/local/hestia/plugins/dev-pw
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/dev-pw"
@@ -77,7 +77,7 @@ touch "/usr/local/hestia/data/hcpp/installed/webdav"
 
 # Install HCPP Quickstart
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.2" https://github.com/virtuosoft-dev/hcpp-quickstart.git quickstart
+git clone --depth 1 --branch "v1.0.2" https://github.com/devstia/hcpp-quickstart.git quickstart
 cd /usr/local/hestia/plugins/quickstart
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/quickstart"
