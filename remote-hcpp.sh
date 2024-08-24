@@ -17,7 +17,7 @@ apt-get install -y build-essential
 
 # Install HestiaCP Pluginable project
 cd /tmp
-git clone --depth 1 --branch "v1.0.1" https://github.com/virtuosoft-dev/hestiacp-pluginable.git
+git clone --depth 1 --branch "v1.0.2" https://github.com/virtuosoft-dev/hestiacp-pluginable.git
 rm -rf /etc/hestiacp/hooks
 mv hestiacp-pluginable/hooks /etc/hestiacp
 rm -rf hestiacp-pluginable-main
