@@ -16,12 +16,9 @@ sleep 1
 apt-get install -y build-essential
 
 # Install HestiaCP Pluginable project
-cd /tmp
-git clone --depth 1 --branch "v1.0.2" https://github.com/virtuosoft-dev/hestiacp-pluginable.git
-rm -rf /etc/hestiacp/hooks
-mv hestiacp-pluginable/hooks /etc/hestiacp
-rm -rf hestiacp-pluginable-main
-/etc/hestiacp/hooks/post_install.sh
+git clone --depth 1 --branch "v1.0.3" https://github.com/virtuosoft-dev/hestiacp-pluginable.git /etc/hestiacp/hooks
+cd /etc/hestiacp/hooks
+./post_install.sh
 service hestia restart
 
 # Install HCPP Devstia Personal Web
