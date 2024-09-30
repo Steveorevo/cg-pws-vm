@@ -115,7 +115,7 @@ DISK_QUOTA='unlimited'
 BANDWIDTH='unlimited'
 NS='ns1.dev.pw,ns2.dev.pw'
 SHELL='bash'
-BACKUPS='0'
+BACKUPS='1'
 EOT
 ./v-add-user-package /tmp/devstia.txt devstia
 ./v-add-user devstia personalweb devstia@dev.pw devstia Devstia PersonalWeb
@@ -126,6 +126,7 @@ chsh -s /bin/bash devstia
 ./v-change-sys-config-value POLICY_USER_EDIT_WEB_TEMPLATES yes
 ./v-change-sys-config-value POLICY_SYSTEM_HIDE_ADMIN yes
 ./v-change-user-role devstia admin
+./v-delete-backup-host local
 
 # Add ll, wp aliases for devstia
 echo "alias wp=/home/devstia/.wp-cli/wp" >> /home/devstia/.bash_aliases
