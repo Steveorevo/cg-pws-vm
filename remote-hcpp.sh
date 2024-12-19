@@ -16,7 +16,7 @@ sleep 1
 apt-get install -y build-essential
 
 # Install HestiaCP Pluginable project
-git clone --depth 1 --branch "v1.0.3" https://github.com/virtuosoft-dev/hestiacp-pluginable.git /etc/hestiacp/hooks
+git clone --depth 1 --branch "v1.0.7" https://github.com/virtuosoft-dev/hestiacp-pluginable.git /etc/hestiacp/hooks
 cd /etc/hestiacp/hooks
 ./post_install.sh
 service hestia restart
@@ -30,7 +30,7 @@ touch "/usr/local/hestia/data/hcpp/installed/dev-pw"
 
 # Install HCPP NodeApp
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.1" https://github.com/virtuosoft-dev/hcpp-nodeapp.git nodeapp
+git clone --depth 1 --branch "v1.0.2" https://github.com/virtuosoft-dev/hcpp-nodeapp.git nodeapp
 cd /usr/local/hestia/plugins/nodeapp
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodeapp"
@@ -81,7 +81,7 @@ touch "/usr/local/hestia/data/hcpp/installed/quickstart"
 
 # Install HCPP VSCode
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.0.2" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode
+git clone --depth 1 --branch "v1.1.0" https://github.com/virtuosoft-dev/hcpp-vscode.git vscode
 cd /usr/local/hestia/plugins/vscode
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/vscode"
@@ -115,7 +115,9 @@ DISK_QUOTA='unlimited'
 BANDWIDTH='unlimited'
 NS='ns1.dev.pw,ns2.dev.pw'
 SHELL='bash'
+BACKUPS_INCREMENTAL='yes'
 BACKUPS='1'
+SHELL_JAIL_ENABLED='yes'
 EOT
 ./v-add-user-package /tmp/devstia.txt devstia
 ./v-add-user devstia personalweb devstia@dev.pw devstia Devstia PersonalWeb
@@ -126,14 +128,14 @@ chsh -s /bin/bash devstia
 ./v-change-sys-config-value POLICY_USER_EDIT_WEB_TEMPLATES yes
 ./v-change-sys-config-value POLICY_SYSTEM_HIDE_ADMIN yes
 ./v-change-user-role devstia admin
-./v-delete-backup-host local
+### ./v-delete-backup-host local
 
 # Add ll, wp aliases for devstia
 echo "alias wp=/home/devstia/.wp-cli/wp" >> /home/devstia/.bash_aliases
 echo "alias ll='ls -alF'" >> /home/devstia/.bash_aliases
 
 # White label the HestiaCP control panel interface
-./v-priv-change-sys-config-value LOGIN_STYLE old
+./v-change-sys-config-value LOGIN_STYLE old
 ./v-change-sys-config-value APP_NAME "Devstia PW"
 ./v-change-sys-config-value FROM_NAME "Devstia PW"
 
