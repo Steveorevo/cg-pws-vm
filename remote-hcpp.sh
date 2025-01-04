@@ -38,7 +38,7 @@ export NVM_DIR=/opt/nvm && source /opt/nvm/nvm.sh
 
 # Install HCPP NodeRED
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v2.0.1" https://github.com/virtuosoft-dev/hcpp-nodered.git nodered
+git clone --depth 1 --branch "v2.0.2" https://github.com/virtuosoft-dev/hcpp-nodered.git nodered
 cd /usr/local/hestia/plugins/nodered
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/nodered"
