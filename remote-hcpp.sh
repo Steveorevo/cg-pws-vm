@@ -16,7 +16,7 @@ sleep 1
 apt-get install -y build-essential
 
 # Install HestiaCP Pluginable project
-git clone --depth 1 --branch "v1.0.7" https://github.com/virtuosoft-dev/hestiacp-pluginable.git /etc/hestiacp/hooks
+git clone --depth 1 --branch "v1.0.8" https://github.com/virtuosoft-dev/hestiacp-pluginable.git /etc/hestiacp/hooks
 cd /etc/hestiacp/hooks
 ./post_install.sh
 service hestia restart
