@@ -74,7 +74,7 @@ touch "/usr/local/hestia/data/hcpp/installed/webdav"
 
 # Install HCPP Quickstart
 cd /usr/local/hestia/plugins
-git clone --depth 1 --branch "v1.2.0" https://github.com/devstia/hcpp-quickstart.git quickstart
+git clone --depth 1 --branch "v1.2.1" https://github.com/devstia/hcpp-quickstart.git quickstart
 cd /usr/local/hestia/plugins/quickstart
 ./install
 touch "/usr/local/hestia/data/hcpp/installed/quickstart"
